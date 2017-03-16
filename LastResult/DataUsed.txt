@@ -1,15 +1,18 @@
 #############################################################
 #############################################################
 #############################################################
-# dt = 0.1
-# No. of Iterations = 300
-# Final Time = 30
-#	
-# X points = 200
-# Y points = 200
-Domain Info:
-Domain (Nondimensional)  = [-14.4509,14.4509] x [-14.4509,14.4509]
-Domain (Cm)  = [-25,25] cm x [-25,25] cm
+# Method is: NonlocalOnly
+# delta t = 0.05
+# No. of Iterations = 500
+# Final Time = 25
+# Comments:	
+# X points (for phero visualization only) = 100
+# Y points (for phero visualization only) = 100
+# Radial discretization of sensing area = 5
+# Angle discretization of sensing area = 5
+# Domain Info:
+# Domain (Nondimensional)  = [-14.4509,14.4509] x [-14.4509,14.4509]
+# Domain (Cm)  = [-25,25] cm x [-25,25] cm
 ------------------------------------------------------
 Random is 1 times normal strength.
 ------------------------------------------------------
@@ -18,7 +21,7 @@ Sensing Area Radius (X_hat)    0.231214
 Sensing Half Angle             Pi/4
 Lambda                         1
 Diffusion                      0.0002
-Evaporation                    0.01
+Evaporation                    0.005
 Droplet Amount                 1e-06
 ------------------------------------------------------
 ------------------------------------------------------

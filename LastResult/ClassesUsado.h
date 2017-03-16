@@ -19,16 +19,56 @@ public:
     double xx ;
     double yy ;
     string Comm;
+//    string Method;
+    int MethodNumber;
     
     Numerics (){
         xx = numxx;
         yy = numyy;
+        bool valid = false;
+    
+        
         cout << "Comments:" << endl;
         getline(cin, Comm, '\n');               // Nice... de http://www.cprogramming.com/tutorial/string.html
-//        cout << "// Number of x intervals:" << endl;
-//        cin >> numxx ;
-//        cout << "// Number of y intervals:" << endl;
-//        cin >> numyy ;
+        
+        // This while is not needed but now it is a reference.
+        while (!valid)
+        {
+            valid = true; //Assume the cin will be an integer.
+            
+            cout << "Method:" << endl;
+            cout << "1:             nonlocal" << endl;
+            cout << "2:             local (linearized)" << endl;
+            cin >> MethodNumber;
+            
+            if(cin.fail()) //cin.fail() checks to see if the value in the cin
+                //stream is the correct type, if not it returns true,
+                //false otherwise.
+            {
+//                Put the following in case an integer input is needed.
+//                from http://www.cplusplus.com/forum/beginner/26821/
+                cin.clear(); //This corrects the stream.
+                cin.ignore(); //This skips the left over stream data.
+                cout << "Please enter 1 or 2." << endl;
+                valid = false; //The cin was not an integer so try again.
+            }
+        }
+        switch (MethodNumber) {
+            case 1:
+                Method = "NonlocalOnly";
+                break;
+            case 2:
+                Method = "LocalOnly";
+                break;
+//            default:
+//                Method = "BothMethods";
+//                break;
+        }
+        cout << "Method is: "<< Method << endl;
+        
+        
+        
+        
         cout << "Number of time iterations:" << endl;
         cin >> numiter ;
         cin.ignore() ;
@@ -81,17 +121,6 @@ class Ant;
 /********************************************************************/
 
 //////////////////////////////////////////////////////////////////////
-///////////HH////////////HHH/////////HH///HHHHHHHHHHHHH///////////////
-//////////HH/HH//////////HH/HH///////HH////////HH/////////////////////
-/////////HH///HH/////////HH//HH//////HH////////HH/////////////////////
-////////HH//////HH///////HH///HH/////HH////////HH/////////////////////
-////////HH///////HH//////HH////HH////HH////////HH/////////////////////
-///////HHHHHHHHHHHH//////HH/////HH///HH////////HH/////////////////////
-//////HH//////////HH/////HH//////HH//HH////////HH/////////////////////
-/////HH////////////HH////HH///////HH/HH////////HH/////////////////////
-/////HH/////////////HH///HH////////HHHH////////HH/////////////////////
-////HH///////////////HH//HH//////////HH////////HH/////////////////////
-//////////////////////////////////////////////////////////////////////
 //     ___      .__   __  .___________.    _______.
 //    /   \     |  \ |  | |           |   /       |
 //   /  ^  \    |   \|  | `---|  |----`  |   (----`
@@ -127,7 +156,8 @@ public:
     double AntVelY;
     double AntHomeDirX;
     double AntHomeDirY;
-    bool IsReturning;
+    bool AntIsActive;
+    bool IsReturning;               // Not yet
     Matrix AntDepositedPhero;       // Deprecated! XXXXXXXXX
     string AntFilenamePos;
     string AntFilenameVel;
@@ -150,8 +180,9 @@ public:
     Ant () : AntDepositedPhero(numxx, numyy){
         AntPosX = 0.;
         AntPosY = 0.;
-        AntVelX = -0.7;
-        AntVelY = .7;
+        AntVelX = -0.1;
+        AntVelY = .1;
+        AntIsActive = false;
         IsReturning = false;
     }
     Ant (const double posX, const double posY) : AntDepositedPhero(numxx, numyy){
@@ -224,6 +255,8 @@ void Ant::Walk(){
     
     double RandomAngle = Uniform(generator);
     double Rzero = SmallNormal(generator);
+    
+    string haha = Method;
 
     ////////////////////////////////////////////////////////
     // Random Walk
@@ -294,7 +327,6 @@ void Ant::Walk(){
     AntVelX = AntVelXNew;
     AntVelY = AntVelYNew;
     
-//    AntDepositedPhero(ii,jj) = 0.01;     //  TEMP!!!!!!
 
     DropletNumberToAdd ++    ;
     
@@ -443,21 +475,53 @@ double Ant::ForceX(){
     double aux  = 0.;
     double auxX = 0.;
     
-    for (int kk=0; kk <= RNumber; kk++) {
-        for (int jj=0; jj <= ThetaNumber; jj++) {
-            double pointr = DRSector*kk;
-            double pointtheta = Angle(AntVelX,AntVelY) - SensingAreaHalfAngle + DThetaSector*jj;
-            aux = aux + DRSector * DThetaSector * pointr*cos(pointtheta) * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr*pointr ;
-            auxX = auxX + DRSector * DThetaSector * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr*pointr ;
+    if (Method == "NonlocalOnly") {
+//        cout << "NL " << endl;
+        
+        for (int kk=0; kk <= RNumber; kk++) {
+            for (int jj=0; jj <= ThetaNumber; jj++) {
+                double pointr = DRSector*kk;
+                double pointtheta = Angle(AntVelX,AntVelY) - SensingAreaHalfAngle + DThetaSector*jj;
+                aux = aux + DRSector * DThetaSector * pointr*cos(pointtheta) * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr*pointr ;
+                auxX = auxX + DRSector * DThetaSector * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr*pointr ;
+            }
         }
+        // FALTA a correção para ser periodico!!!!!!!!!!!!!
+        
+        aux = aux/auxX;
+        return aux;
     }
-            // FALTA a correção para ser periodico!!!!!!!!!!!!!
     
-    aux = aux/auxX;
     
-//    cout << "Main X: " << aux << endl;
-//    cout << "Angle: " << Angle(AntVelX,AntVelY) << endl;
-    return aux;
+    
+    
+    
+    if (Method == "LocalOnly") {
+//        cout << "L " << endl;
+        
+        double A11 = cos(2.*Angle(AntVelX,AntVelY));
+        double A12 = sin(2.*Angle(AntVelX,AntVelY));
+        
+        double MAT11 = 1. + (sin(2.*SensingAreaHalfAngle)/(2.*SensingAreaHalfAngle))
+        * A11;
+        
+        double MAT12 = (sin(2.*SensingAreaHalfAngle)/(2.*SensingAreaHalfAngle))
+        * A12;
+        
+        
+        aux = (2./3.) * SENSING_AREA_RADIUS * Lambda * cos(Angle(AntVelX,AntVelY))
+        * sin(SensingAreaHalfAngle) / SensingAreaHalfAngle
+        + (1./4.)*pow(SENSING_AREA_RADIUS,2.) * Lambda
+        * (MAT11*PheromoneGradientX() + MAT12*PheromoneGradientY() ) / PheromoneConcentration(AntPosX,AntPosY);
+        
+        
+        return aux;
+    }
+    else {
+        return 0.;
+    }
+
+    
 }
 //////////////////////////////////////////////////////////////////////
 //                  END Ant::ForceX
@@ -473,21 +537,53 @@ double Ant::ForceY(){
     double auxY=0.;
     
     
-    for (int kk=0; kk <= RNumber; kk++) {
-        for (int jj=0; jj <= ThetaNumber; jj++) {
-            double pointr = DRSector*kk;
-            double pointtheta = Angle(AntVelX,AntVelY) - SensingAreaHalfAngle + DThetaSector*jj;
-            aux = aux + DRSector * DThetaSector * pointr*sin(pointtheta) * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr*pointr ;
-            auxY = auxY + DRSector * DThetaSector * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr*pointr ;
+    if (Method == "NonlocalOnly") {
+//        cout << "NL " << endl;
+        
+        
+        for (int kk=0; kk <= RNumber; kk++) {
+            for (int jj=0; jj <= ThetaNumber; jj++) {
+                double pointr = DRSector*kk;
+                double pointtheta = Angle(AntVelX,AntVelY) - SensingAreaHalfAngle + DThetaSector*jj;
+                aux = aux + DRSector * DThetaSector * pointr*sin(pointtheta) * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr*pointr ;
+                auxY = auxY + DRSector * DThetaSector * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr*pointr ;
+            }
         }
+        // FALTA a correção para ser periodico!!!!!!!!!!!!!
+        
+        aux = aux/auxY;
+        
+        return aux;
     }
-    // FALTA a correção para ser periodico!!!!!!!!!!!!!
     
-    aux = aux/auxY;
+    if (Method == "LocalOnly") {
+//        cout << "L " << endl;
+        
+        
+        
+        double A21 = sin(2.*Angle(AntVelX,AntVelY));
+        double A22 = - cos(2.*Angle(AntVelX,AntVelY));
+        
+        double MAT21 = (sin(2.*SensingAreaHalfAngle)/(2.*SensingAreaHalfAngle))
+        * A21;
+        
+        double MAT22 = 1. + (sin(2.*SensingAreaHalfAngle)/(2.*SensingAreaHalfAngle))
+        * A22;
+        
+        aux = (2./3.) * SENSING_AREA_RADIUS * Lambda * sin(Angle(AntVelX,AntVelY))
+        * sin(SensingAreaHalfAngle) / SensingAreaHalfAngle
+        + (1./4.)*pow(SENSING_AREA_RADIUS,2.) * Lambda
+        * (MAT21*PheromoneGradientX() + MAT22*PheromoneGradientY() ) / PheromoneConcentration(AntPosX,AntPosY);
+        
+        return aux;
+    }
+    else {
+        return 0.;
+    }
+
     
-//    cout << "Main Y: " << aux << endl;
     
-    return aux;
+    
 }
 //////////////////////////////////////////////////////////////////////
 //                  END Ant::ForceY

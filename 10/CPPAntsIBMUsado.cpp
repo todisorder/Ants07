@@ -22,8 +22,10 @@ using namespace std;
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
-static double const numxx = 200.;
-static double const numyy = 200.;
+static string Method;
+
+static double const numxx = 100.;
+static double const numyy = 100.;
 
 static int const NumberOfAnts = 3;
 
@@ -45,6 +47,7 @@ default_random_engine generator(seed1);
 normal_distribution<double> Normal(0.,1.);      // Normal(0.,1.)
 normal_distribution<double> SmallNormal(0.,.05);      // (0.,.05)
 uniform_real_distribution<double> Uniform(0.,2.*Pi);      // Uniformly distributed angle
+uniform_int_distribution<int> UniformInteger(0,100);      // Uniformly distributed integer
 //http://www.cplusplus.com/reference/random/normal_distribution/
 // Normal(mean,stddev)
 // Usage:
@@ -56,7 +59,7 @@ static double const Turn_off_random = 1.*1.;    //*0.02;
 static double const RegularizingEpsilon = 0.01;
 
 //  This is pheromone detection threshold, but not exactly. It's complicated.
-static double const Threshold = 0.00001; //   Explained in the Readme...   0.1
+static double const Threshold = 0.001; //   Explained in the Readme...   0.1
 
 
 //////////////////////////////////////////////////////
@@ -70,7 +73,7 @@ static double const t_hat_in_seconds = 1.;
 static double const X_hat_in_cm = 1.73;
 
 //  Relaxation time tau em segundos:
-static double const tau = .25;         //    0.5
+static double const tau = .1;         //    0.5
 
 //  Nondimensional relaxation TAU = (t_hat / tau)^(-1).
 //  Deve ser o relaxation time nas unidades t_hat.
@@ -96,13 +99,13 @@ static double const Lambda = 1.;         //10./SENSING_AREA_RADIUS;????
 
 // tempo final
 //static double const TFINAL = 0.1;
-static double const delta_t = 0.1;   //     0.05
+static double const delta_t = 0.05;   //     0.05
 
 //  Pheromone Diffusion:
 static double const Diffusion = 0.0002;      // .005
 
 //  Pheromone Evaporation:
-static double const Evaporation = 0.01;        //0.005
+static double const Evaporation = 0.005;        //0.005
 
 //  How much pheromone each ant deposits... not sure if I want this,
 //  or the member vector in the Ant class.
@@ -166,8 +169,8 @@ static double const PheroHigh = .02;
 ////////////////////////////
 // Nonlocal Sector Discretization parameters
 ////////////////////////////
-static int const RNumber = 10;
-static int const ThetaNumber = 10;
+static int const RNumber = 5;
+static int const ThetaNumber = 5;
 static double const DRSector = SENSING_AREA_RADIUS / RNumber;
 static double const DThetaSector = 2.* SensingAreaHalfAngle / ThetaNumber;
 ////////////////////////////
@@ -381,15 +384,18 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile << "#############################################################"<<endl;
     tempfile << "#############################################################"<<endl;
     tempfile << "#############################################################"<<endl;
-    tempfile << "# dt = "<< delta_t<< endl;
+    tempfile << "# Method is: "<< Method << endl;
+    tempfile << "# delta t = "<< delta_t<< endl;
     tempfile << "# No. of Iterations = "<< data.numiter << endl;
     tempfile << "# Final Time = "<< data.numiter * delta_t << endl;
-    tempfile << "#" << "\t" << COMM <<endl;
-    tempfile << "# X points = "<< data.xx << endl;
-    tempfile << "# Y points = "<< data.yy << endl;
-    tempfile << "Domain Info:" << endl;
-    tempfile << "Domain (Nondimensional)  = [" << x_1 << "," << x_2 << "] x [" << y_1 << "," << y_2 << "]" << endl;
-    tempfile << "Domain (Cm)  = [" << x_1_cm << "," << x_2_cm << "] cm x [" << y_1_cm << "," << y_2_cm << "] cm" << endl;
+    tempfile << "# Comments:" << "\t" << COMM <<endl;
+    tempfile << "# X points (for phero visualization only) = "<< data.xx << endl;
+    tempfile << "# Y points (for phero visualization only) = "<< data.yy << endl;
+    tempfile << "# Radial discretization of sensing area = "<< RNumber << endl;
+    tempfile << "# Angle discretization of sensing area = "<< ThetaNumber << endl;
+    tempfile << "# Domain Info:" << endl;
+    tempfile << "# Domain (Nondimensional)  = [" << x_1 << "," << x_2 << "] x [" << y_1 << "," << y_2 << "]" << endl;
+    tempfile << "# Domain (Cm)  = [" << x_1_cm << "," << x_2_cm << "] cm x [" << y_1_cm << "," << y_2_cm << "] cm" << endl;
     tempfile << "------------------------------------------------------" << endl;
     tempfile << "Random is " << Turn_off_random << " times normal strength." << endl;
     tempfile << "------------------------------------------------------" << endl;
@@ -455,6 +461,7 @@ int main (void){
     Numerics data;
     int numiter = data.numiter;
     
+    int randomnumber;
     
     //////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////
@@ -462,12 +469,14 @@ int main (void){
     int NN = NumberOfAnts;
     int totalantnumber = NN;
     
+    int ActiveAnts = 1;
+    
     Ant * Pop;
     Pop = new Ant[NN];
 
     for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
         
-                //  Random initial velocities
+        //  Random initial velocities
         Pop[antnumber].AntVelX = 0.1*cos(Normal(generator));
         Pop[antnumber].AntVelY = 0.1*sin(Normal(generator));
         
@@ -481,6 +490,8 @@ int main (void){
     }
     
     
+    
+    
     ofstream AntPos("AntPos.txt");
     AntPos << "###  Units are X_hat = " << X_hat_in_cm << "cm." << endl;
     AntPos << Pop[0].AntPosX << "\t" << Pop[0].AntPosY << endl;
@@ -492,6 +503,9 @@ int main (void){
     //////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////
 
+    //  Activate one ant
+    Pop[0].AntIsActive = true;
+    
     for (int iter=1; iter <= numiter; iter++) {
 
         Ant::DropletNumberToAdd = 0;
@@ -499,8 +513,10 @@ int main (void){
         
         for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
             
+            if (Pop[antnumber].AntIsActive) {
+                Pop[antnumber].Walk();
+            }
 
-            Pop[antnumber].Walk();
             
             if (ChangedSide == 1) {
                 Pop[antnumber].AntFilePos << endl;
@@ -513,6 +529,19 @@ int main (void){
             //cout << "The ForceY:   " << Pop[antnumber].ForceY() << endl;
 //            cout << "Deposited Phero:   " << Pop[antnumber].AntDepositedPhero(3,3) << endl;
         }
+        
+        //  Decide to activate another ant or not
+        
+        randomnumber = UniformInteger(generator);
+        cout << "Rand: " <<randomnumber << endl;
+        if (randomnumber == 1) {
+            Pop[ActiveAnts].AntIsActive = true;
+            ActiveAnts++;
+            cout << "Activated ant number " << ActiveAnts << endl;
+        }
+        
+        
+        
         
         Ant::DropletNumber += Ant::DropletNumberToAdd;
         

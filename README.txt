@@ -1,4 +1,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Ants07
+https://github.com/todisorder/Ants07.git
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+>> 16 Março 2017
+
+> vou juntar os dois códigos, o linearizado e o não.
+> vou fazer tempos iniciais diferentes para elas.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Ants06
 https://github.com/todisorder/Ants06.git
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -17,6 +28,7 @@ https://github.com/todisorder/Ants05.git
 	Mas no final não dá porque, como é o problema linearizado,
 	a normalização dá negativa, que não pode!
 > Mas consegue bem o caso do trilho dado.
+> 7 março: vou fazer com normalização de ordem zero, deve dar!
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
