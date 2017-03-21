@@ -3,8 +3,8 @@
 #############################################################
 # Method is: NonlocalOnly
 # delta t = 0.05
-# No. of Iterations = 500
-# Final Time = 25
+# No. of Iterations = 10000
+# Final Time = 500
 # Comments:	
 # X points (for phero visualization only) = 100
 # Y points (for phero visualization only) = 100
@@ -16,13 +16,20 @@
 ------------------------------------------------------
 Random is 1 times normal strength.
 ------------------------------------------------------
-Sensing Area Radius (cm)       0.4
-Sensing Area Radius (X_hat)    0.231214
+Sensing Area Radius (cm)       0.8
+Sensing Area Radius (X_hat)    0.462428
 Sensing Half Angle             Pi/4
 Lambda                         1
 Diffusion                      0.0002
-Evaporation                    0.005
-Droplet Amount                 1e-06
+Evaporation                    0.01
+Droplet Amount                 1e-07
+Threshold                      1e-05
 ------------------------------------------------------
+delta t (seconds) = 0.05
+Tfinal (t hat) = 25
+Tfinal (seconds) = 25
+Tfinal (minutos) = 0.416667
+Tfinal (horas) = 0.00694444
 ------------------------------------------------------
+Seed:  4189821039
  

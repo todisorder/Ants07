@@ -24,12 +24,12 @@ using namespace std;
 
 static string Method;
 
-static double const numxx = 200.;
-static double const numyy = 200.;
+static double const numxx = 100.;
+static double const numyy = 100.;
 
-static int const NumberOfAnts = 3;
+static int const NumberOfAnts = 30;
 
-static int const LARGE_NUMBER = 100000;
+static int const LARGE_NUMBER = 10000000;
 
 static int const MaxActiveDroplets = 2000;
 
@@ -42,11 +42,12 @@ static double const Ln2 = 0.6931471806;
 // obtain a seed from the system clock:
 unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
 
-
-default_random_engine generator(seed1);
+//default_random_engine generator(seed1);
+default_random_engine generator(3800807092);
 normal_distribution<double> Normal(0.,1.);      // Normal(0.,1.)
 normal_distribution<double> SmallNormal(0.,.05);      // (0.,.05)
 uniform_real_distribution<double> Uniform(0.,2.*Pi);      // Uniformly distributed angle
+uniform_int_distribution<int> UniformInteger(0,500);      // Uniformly distributed integer
 //http://www.cplusplus.com/reference/random/normal_distribution/
 // Normal(mean,stddev)
 // Usage:
@@ -72,7 +73,7 @@ static double const t_hat_in_seconds = 1.;
 static double const X_hat_in_cm = 1.73;
 
 //  Relaxation time tau em segundos:
-static double const tau = .25;         //    0.5
+static double const tau = .1;         //    0.5
 
 //  Nondimensional relaxation TAU = (t_hat / tau)^(-1).
 //  Deve ser o relaxation time nas unidades t_hat.
@@ -80,7 +81,7 @@ static double const tau = .25;         //    0.5
 static double const TAU = tau / t_hat_in_seconds;         //
 
 //  Sensing area radius em centimetros
-static double const SensingAreaRadius = .4;         //  .4
+static double const SensingAreaRadius = .8;         //  .4
 
 //  Sensing area radius em X_hat
 static double const SENSING_AREA_RADIUS = SensingAreaRadius / X_hat_in_cm;         //
@@ -98,7 +99,7 @@ static double const Lambda = 1.;         //10./SENSING_AREA_RADIUS;????
 
 // tempo final
 //static double const TFINAL = 0.1;
-static double const delta_t = 0.1;   //     0.05
+static double const delta_t = 0.05;   //     0.05
 
 //  Pheromone Diffusion:
 static double const Diffusion = 0.0002;      // .005
@@ -108,7 +109,7 @@ static double const Evaporation = 0.01;        //0.005
 
 //  How much pheromone each ant deposits... not sure if I want this,
 //  or the member vector in the Ant class.
-static double const DropletAmount = 1.*.1*.00001;        //0.00001
+static double const DropletAmount = 1.*.1*.000001;        //0.00001
 
 string SensitivityMethod;
 
@@ -168,8 +169,8 @@ static double const PheroHigh = .02;
 ////////////////////////////
 // Nonlocal Sector Discretization parameters
 ////////////////////////////
-static int const RNumber = 10;
-static int const ThetaNumber = 10;
+static int const RNumber = 5;
+static int const ThetaNumber = 5;
 static double const DRSector = SENSING_AREA_RADIUS / RNumber;
 static double const DThetaSector = 2.* SensingAreaHalfAngle / ThetaNumber;
 ////////////////////////////
@@ -380,6 +381,8 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile.open("DataUsed.txt");
     string tempinfo;
     
+    double tt = data.numiter * delta_t;
+    
     tempfile << "#############################################################"<<endl;
     tempfile << "#############################################################"<<endl;
     tempfile << "#############################################################"<<endl;
@@ -390,6 +393,8 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile << "# Comments:" << "\t" << COMM <<endl;
     tempfile << "# X points (for phero visualization only) = "<< data.xx << endl;
     tempfile << "# Y points (for phero visualization only) = "<< data.yy << endl;
+    tempfile << "# Radial discretization of sensing area = "<< RNumber << endl;
+    tempfile << "# Angle discretization of sensing area = "<< ThetaNumber << endl;
     tempfile << "# Domain Info:" << endl;
     tempfile << "# Domain (Nondimensional)  = [" << x_1 << "," << x_2 << "] x [" << y_1 << "," << y_2 << "]" << endl;
     tempfile << "# Domain (Cm)  = [" << x_1_cm << "," << x_2_cm << "] cm x [" << y_1_cm << "," << y_2_cm << "] cm" << endl;
@@ -403,13 +408,15 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile << "Diffusion                      " << Diffusion << endl;
     tempfile << "Evaporation                    " << Evaporation << endl;
     tempfile << "Droplet Amount                 " << DropletAmount << endl;
+    tempfile << "Threshold                      " << Threshold << endl;
     tempfile << "------------------------------------------------------" << endl;
-    //    tempfile << "delta t (seconds) = " << delta_t * THatSec << endl;
-    //    tempfile << "Tfinal (t hat) = " << tt*delta_t<< endl;
-    //    tempfile << "Tfinal (seconds) = " << tt*delta_t * THatSec << endl;
-    //    tempfile << "Tfinal (minutos) = " << tt*delta_t * THatSec / 60.<< endl;
-    //    tempfile << "Tfinal (horas) = " << tt*delta_t * THatSec / 3600.<< endl;
+    tempfile << "delta t (seconds) = " << delta_t * t_hat_in_seconds << endl;
+    tempfile << "Tfinal (t hat) = " << tt*delta_t<< endl;
+    tempfile << "Tfinal (seconds) = " << tt*delta_t * t_hat_in_seconds << endl;
+    tempfile << "Tfinal (minutos) = " << tt*delta_t * t_hat_in_seconds / 60.<< endl;
+    tempfile << "Tfinal (horas) = " << tt*delta_t * t_hat_in_seconds / 3600.<< endl;
     tempfile << "------------------------------------------------------" << endl;
+    tempfile << "Seed:  " << seed1 << endl;
     
     tempfile << " " << endl;
     
@@ -458,6 +465,7 @@ int main (void){
     Numerics data;
     int numiter = data.numiter;
     
+    int randomnumber;
     
     //////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////
@@ -465,12 +473,14 @@ int main (void){
     int NN = NumberOfAnts;
     int totalantnumber = NN;
     
+    int ActiveAnts = 1;
+    
     Ant * Pop;
     Pop = new Ant[NN];
 
     for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
         
-                //  Random initial velocities
+        //  Random initial velocities
         Pop[antnumber].AntVelX = 0.1*cos(Normal(generator));
         Pop[antnumber].AntVelY = 0.1*sin(Normal(generator));
         
@@ -484,6 +494,8 @@ int main (void){
     }
     
     
+    
+    
     ofstream AntPos("AntPos.txt");
     AntPos << "###  Units are X_hat = " << X_hat_in_cm << "cm." << endl;
     AntPos << Pop[0].AntPosX << "\t" << Pop[0].AntPosY << endl;
@@ -495,6 +507,9 @@ int main (void){
     //////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////
 
+    //  Activate one ant
+    Pop[0].AntIsActive = true;
+    
     for (int iter=1; iter <= numiter; iter++) {
 
         Ant::DropletNumberToAdd = 0;
@@ -502,8 +517,10 @@ int main (void){
         
         for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
             
+            if (Pop[antnumber].AntIsActive) {
+                Pop[antnumber].Walk();
+            }
 
-            Pop[antnumber].Walk();
             
             if (ChangedSide == 1) {
                 Pop[antnumber].AntFilePos << endl;
@@ -516,6 +533,19 @@ int main (void){
             //cout << "The ForceY:   " << Pop[antnumber].ForceY() << endl;
 //            cout << "Deposited Phero:   " << Pop[antnumber].AntDepositedPhero(3,3) << endl;
         }
+        
+        //  Decide to activate another ant or not
+        
+        randomnumber = UniformInteger(generator);
+        cout << "Rand: " <<randomnumber << endl;
+        if (randomnumber == 1) {
+            Pop[ActiveAnts].AntIsActive = true;
+            ActiveAnts++;
+            cout << "Activated ant number " << ActiveAnts << endl;
+        }
+        
+        
+        
         
         Ant::DropletNumber += Ant::DropletNumberToAdd;
         
@@ -531,14 +561,11 @@ int main (void){
     
     PrintInfo(delta_t,data.Comm, data);
     
-//    Ant::DropletCentersX.Print();
-//    Ant::DropletCentersY.Print();
+    cout << "Total number of active ants: " << ActiveAnts << "/" << NN << endl;
+    
     cout << "Building Pheromone... " << endl;
     Ant::BuildPheromone();
 
-//    for (int i=1; i<=40; i++) {
-//        cout << " no ponto (" << Ant::DropletCentersX(i,1)<<","<< Ant::DropletCentersY(i,1) <<") e tempo "<< Ant::DropletTimes(i,1)<< " Ha phero."<< endl;
-//    }
     
     ofstream Phero;
     Phero.open("Phero.txt");

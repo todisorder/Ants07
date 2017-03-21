@@ -27,9 +27,9 @@ static string Method;
 static double const numxx = 100.;
 static double const numyy = 100.;
 
-static int const NumberOfAnts = 3;
+static int const NumberOfAnts = 30;
 
-static int const LARGE_NUMBER = 100000;
+static int const LARGE_NUMBER = 10000000;
 
 static int const MaxActiveDroplets = 2000;
 
@@ -42,12 +42,12 @@ static double const Ln2 = 0.6931471806;
 // obtain a seed from the system clock:
 unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
 
-
 default_random_engine generator(seed1);
+//default_random_engine generator(3800807093);      // To use same seed as another simulation.
 normal_distribution<double> Normal(0.,1.);      // Normal(0.,1.)
 normal_distribution<double> SmallNormal(0.,.05);      // (0.,.05)
 uniform_real_distribution<double> Uniform(0.,2.*Pi);      // Uniformly distributed angle
-uniform_int_distribution<int> UniformInteger(0,100);      // Uniformly distributed integer
+uniform_int_distribution<int> UniformInteger(0,500);      // Uniformly distributed integer
 //http://www.cplusplus.com/reference/random/normal_distribution/
 // Normal(mean,stddev)
 // Usage:
@@ -59,7 +59,7 @@ static double const Turn_off_random = 1.*1.;    //*0.02;
 static double const RegularizingEpsilon = 0.01;
 
 //  This is pheromone detection threshold, but not exactly. It's complicated.
-static double const Threshold = 0.001; //   Explained in the Readme...   0.1
+static double const Threshold = 0.00001; //   Explained in the Readme...   0.1
 
 
 //////////////////////////////////////////////////////
@@ -81,7 +81,7 @@ static double const tau = .1;         //    0.5
 static double const TAU = tau / t_hat_in_seconds;         //
 
 //  Sensing area radius em centimetros
-static double const SensingAreaRadius = .4;         //  .4
+static double const SensingAreaRadius = .8;         //  .4
 
 //  Sensing area radius em X_hat
 static double const SENSING_AREA_RADIUS = SensingAreaRadius / X_hat_in_cm;         //
@@ -105,11 +105,11 @@ static double const delta_t = 0.05;   //     0.05
 static double const Diffusion = 0.0002;      // .005
 
 //  Pheromone Evaporation:
-static double const Evaporation = 0.005;        //0.005
+static double const Evaporation = 0.01;        //0.005
 
 //  How much pheromone each ant deposits... not sure if I want this,
 //  or the member vector in the Ant class.
-static double const DropletAmount = 1.*.1*.00001;        //0.00001
+static double const DropletAmount = 1.*.1*.000001;        //0.00001
 
 string SensitivityMethod;
 
@@ -381,6 +381,8 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile.open("DataUsed.txt");
     string tempinfo;
     
+    double tt = data.numiter * delta_t;
+    
     tempfile << "#############################################################"<<endl;
     tempfile << "#############################################################"<<endl;
     tempfile << "#############################################################"<<endl;
@@ -406,13 +408,15 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile << "Diffusion                      " << Diffusion << endl;
     tempfile << "Evaporation                    " << Evaporation << endl;
     tempfile << "Droplet Amount                 " << DropletAmount << endl;
+    tempfile << "Threshold                      " << Threshold << endl;
     tempfile << "------------------------------------------------------" << endl;
-    //    tempfile << "delta t (seconds) = " << delta_t * THatSec << endl;
-    //    tempfile << "Tfinal (t hat) = " << tt*delta_t<< endl;
-    //    tempfile << "Tfinal (seconds) = " << tt*delta_t * THatSec << endl;
-    //    tempfile << "Tfinal (minutos) = " << tt*delta_t * THatSec / 60.<< endl;
-    //    tempfile << "Tfinal (horas) = " << tt*delta_t * THatSec / 3600.<< endl;
+    tempfile << "delta t (seconds) = " << delta_t * t_hat_in_seconds << endl;
+    tempfile << "Tfinal (t hat) = " << tt*delta_t<< endl;
+    tempfile << "Tfinal (seconds) = " << tt*delta_t * t_hat_in_seconds << endl;
+    tempfile << "Tfinal (minutos) = " << tt*delta_t * t_hat_in_seconds / 60.<< endl;
+    tempfile << "Tfinal (horas) = " << tt*delta_t * t_hat_in_seconds / 3600.<< endl;
     tempfile << "------------------------------------------------------" << endl;
+    tempfile << "Seed:  " << seed1 << endl;
     
     tempfile << " " << endl;
     
@@ -557,14 +561,11 @@ int main (void){
     
     PrintInfo(delta_t,data.Comm, data);
     
-//    Ant::DropletCentersX.Print();
-//    Ant::DropletCentersY.Print();
+    cout << "Total number of active ants: " << ActiveAnts << "/" << NN << endl;
+    
     cout << "Building Pheromone... " << endl;
     Ant::BuildPheromone();
 
-//    for (int i=1; i<=40; i++) {
-//        cout << " no ponto (" << Ant::DropletCentersX(i,1)<<","<< Ant::DropletCentersY(i,1) <<") e tempo "<< Ant::DropletTimes(i,1)<< " Ha phero."<< endl;
-//    }
     
     ofstream Phero;
     Phero.open("Phero.txt");
