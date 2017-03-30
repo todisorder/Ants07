@@ -16,7 +16,7 @@ cd "$Folder"
 
 ./antsibm"$Version" &&
 mkdir Plots
-sh plot-png.sh &&
+#sh plot-png.sh &&
 #gnuplot plots-Mass.plt
 #cp ../LogsLast.txt .
 

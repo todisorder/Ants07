@@ -38,7 +38,8 @@ public:
             
             cout << "Method:" << endl;
             cout << "1:             nonlocal" << endl;
-            cout << "2:             local (linearized)" << endl;
+            cout << "2:             point antennae" << endl;
+            cout << "3:             local (linearized)" << endl;
             cin >> MethodNumber;
             
             if(cin.fail()) //cin.fail() checks to see if the value in the cin
@@ -49,7 +50,7 @@ public:
 //                from http://www.cplusplus.com/forum/beginner/26821/
                 cin.clear(); //This corrects the stream.
                 cin.ignore(); //This skips the left over stream data.
-                cout << "Please enter 1 or 2." << endl;
+                cout << "Please enter one of the options." << endl;
                 valid = false; //The cin was not an integer so try again.
             }
         }
@@ -58,6 +59,9 @@ public:
                 Method = "NonlocalOnly";
                 break;
             case 2:
+                Method = "Deltas";
+                break;
+            case 3:
                 Method = "LocalOnly";
                 break;
 //            default:
@@ -160,8 +164,10 @@ public:
     bool IsReturning;               // Not yet
     Matrix AntDepositedPhero;       // Deprecated! XXXXXXXXX
     string AntFilenamePos;
+    string AntFilenamePosLast;
     string AntFilenameVel;
     ofstream AntFilePos;
+    ofstream AntFilePosLast;
     ofstream AntFileVel;
     
     void Walk();
@@ -476,7 +482,7 @@ double Ant::ForceX(){
     double auxX = 0.;
     
     if (Method == "NonlocalOnly") {
-//        cout << "NL " << endl;
+        //        cout << "NL " << endl;
         
         for (int kk=0; kk <= RNumber; kk++) {
             for (int jj=0; jj <= ThetaNumber; jj++) {
@@ -486,6 +492,24 @@ double Ant::ForceX(){
                 auxX = auxX + DRSector * DThetaSector * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr*pointr ;
             }
         }
+        // FALTA a correção para ser periodico!!!!!!!!!!!!!
+        
+        aux = aux/auxX;
+        return aux;
+    }
+    
+    if (Method == "Deltas") {
+        //        cout << "NL " << endl;
+        
+        double pointr = DRSector*RNumber;
+        double pointthetaL = Angle(AntVelX,AntVelY) - SensingAreaHalfAngle;
+        double pointthetaR = Angle(AntVelX,AntVelY) + SensingAreaHalfAngle;
+
+        aux = pointr*cos(pointthetaL) * PheromoneConcentration(AntPosX + pointr*cos(pointthetaL), AntPosY + pointr*sin(pointthetaL)) + pointr*cos(pointthetaR) * PheromoneConcentration(AntPosX + pointr*cos(pointthetaR), AntPosY + pointr*sin(pointthetaR)) ;
+        auxX = PheromoneConcentration(AntPosX + pointr*cos(pointthetaL), AntPosY + pointr*sin(pointthetaL)) +  PheromoneConcentration(AntPosX + pointr*cos(pointthetaR), AntPosY + pointr*sin(pointthetaR)) ;
+        
+        
+        
         // FALTA a correção para ser periodico!!!!!!!!!!!!!
         
         aux = aux/auxX;
@@ -538,7 +562,7 @@ double Ant::ForceY(){
     
     
     if (Method == "NonlocalOnly") {
-//        cout << "NL " << endl;
+        //        cout << "NL " << endl;
         
         
         for (int kk=0; kk <= RNumber; kk++) {
@@ -550,6 +574,24 @@ double Ant::ForceY(){
             }
         }
         // FALTA a correção para ser periodico!!!!!!!!!!!!!
+        
+        aux = aux/auxY;
+        
+        return aux;
+    }
+    if (Method == "Deltas") {
+        //        cout << "NL " << endl;
+        
+        // FALTA a correção para ser periodico!!!!!!!!!!!!!
+        
+        double pointr = DRSector*RNumber;
+        double pointthetaL = Angle(AntVelX,AntVelY) - SensingAreaHalfAngle;
+        double pointthetaR = Angle(AntVelX,AntVelY) + SensingAreaHalfAngle;
+        
+        aux = pointr*sin(pointthetaL) * PheromoneConcentration(AntPosX + pointr*cos(pointthetaL), AntPosY + pointr*sin(pointthetaL)) + pointr*sin(pointthetaR) * PheromoneConcentration(AntPosX + pointr*cos(pointthetaR), AntPosY + pointr*sin(pointthetaR)) ;
+        auxY = PheromoneConcentration(AntPosX + pointr*cos(pointthetaL), AntPosY + pointr*sin(pointthetaL)) +  PheromoneConcentration(AntPosX + pointr*cos(pointthetaR), AntPosY + pointr*sin(pointthetaR)) ;
+
+        
         
         aux = aux/auxY;
         
