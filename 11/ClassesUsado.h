@@ -164,8 +164,10 @@ public:
     bool IsReturning;               // Not yet
     Matrix AntDepositedPhero;       // Deprecated! XXXXXXXXX
     string AntFilenamePos;
+    string AntFilenamePosLast;
     string AntFilenameVel;
     ofstream AntFilePos;
+    ofstream AntFilePosLast;
     ofstream AntFileVel;
     
     void Walk();

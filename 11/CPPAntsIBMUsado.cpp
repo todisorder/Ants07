@@ -27,9 +27,9 @@ static string Method;
 static double const numxx = 100.;
 static double const numyy = 100.;
 
-static int const NumberOfAnts = 30;
+static int const NumberOfAnts = 300;
 
-static int const LARGE_NUMBER = 10000000;
+static int const LARGE_NUMBER = 1000;    //10000000
 
 static int const MaxActiveDroplets = 2000;
 
@@ -44,10 +44,10 @@ unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
 
 default_random_engine generator(seed1);
 //default_random_engine generator(3800807093);      // To use same seed as another simulation.
-normal_distribution<double> Normal(0.,1.);      // Normal(0.,1.)
+normal_distribution<double> Normal(0.,1.);          // Normal(0.,1.)
 normal_distribution<double> SmallNormal(0.,.05);      // (0.,.05)
 uniform_real_distribution<double> Uniform(0.,2.*Pi);      // Uniformly distributed angle
-uniform_int_distribution<int> UniformInteger(0,500);      // Uniformly distributed integer
+uniform_int_distribution<int> UniformInteger(0,20);      // Uniformly distributed integer
 //http://www.cplusplus.com/reference/random/normal_distribution/
 // Normal(mean,stddev)
 // Usage:
@@ -488,6 +488,10 @@ int main (void){
         Pop[antnumber].AntFilePos.open(Pop[antnumber].AntFilenamePos);
         cout << Pop[antnumber].AntFilenamePos << endl;
         
+        Pop[antnumber].AntFilenamePosLast = "AntPosLast-"+to_string(antnumber+1)+".txt";
+        Pop[antnumber].AntFilePosLast.open(Pop[antnumber].AntFilenamePosLast);
+        cout << Pop[antnumber].AntFilenamePosLast << endl;
+        
         Pop[antnumber].AntFilenameVel = "AntVel-"+to_string(antnumber+1)+".txt";
         Pop[antnumber].AntFileVel.open(Pop[antnumber].AntFilenameVel);
         cout << Pop[antnumber].AntFilenameVel << endl;
@@ -558,6 +562,11 @@ int main (void){
         
     }// End of time cycle
     
+    
+    // Write last position to a file.
+    for (int antnumber=0; antnumber < totalantnumber; antnumber++){
+        Pop[antnumber].AntFilePosLast << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << endl;
+    }
     
     PrintInfo(delta_t,data.Comm, data);
     

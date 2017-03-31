@@ -27,9 +27,9 @@ static string Method;
 static double const numxx = 100.;
 static double const numyy = 100.;
 
-static int const NumberOfAnts = 84;
+static int const NumberOfAnts = 300;
 
-static int const LARGE_NUMBER = 10000000;
+static int const LARGE_NUMBER = 10000000;    //10000000
 
 static int const MaxActiveDroplets = 2000;
 
