@@ -13,3 +13,16 @@ do for [t=0:50] {
 #    set output outfile
 #    plot ant."T".iter.".txt"
 #}
+
+
+plot "my.dat" every A:B:C:D:E:F
+
+A: line increment
+B: data block increment
+C: The first line
+D: The first data block
+E: The last line
+F: The last data block
+
+plot for [i=1:10] "AntPos-".i.".txt" every ::3::4 tit "" w lp
+# isto dá só a linha de 3 a 4.
