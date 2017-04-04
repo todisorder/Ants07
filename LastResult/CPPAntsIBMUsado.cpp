@@ -31,7 +31,7 @@ static int const NumberOfAnts = 10;
 
 static int const LARGE_NUMBER = 10000000;    //10000000
 
-static int const MaxActiveDroplets = 20;
+static int const MaxActiveDroplets = 20000;
 
 static int const TestWithGivenTrail = 0;    // 1=true, 0=false
 
@@ -309,25 +309,30 @@ double Heat(double XX, double YY, double elapsed_time, double amount){
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 //
-//void SaveAnt(Matrix u1, int icurrent, string ref)
-//{
-//    double Tcurrent = icurrent * dt;
-//    
-//    stringstream sstream_buffer;
-//    string string_buffer;
-//    
-//    // create the filename (using string/stringstream for manipulation of the data that will form the name);
-//    sstream_buffer.clear();
-//    //	sstream_buffer << "./" << method_name << "/U_" << fixed << setprecision(6) << t_n  << "___" << n;
-//    //  	sstream_buffer << ref << "T-" << fixed << setprecision(2) << icurrent  << ".txt";
+void SaveAnt(double posx, double posy, int icurrent, string ref)
+{
+    double Tcurrent = icurrent * delta_t;
+    
+    stringstream sstream_buffer;
+    string string_buffer;
+    
+    // create the filename (using string/stringstream for manipulation of the data that will form the name);
+    sstream_buffer.clear();
+    //	sstream_buffer << "./" << method_name << "/U_" << fixed << setprecision(6) << t_n  << "___" << n;
+    //  	sstream_buffer << ref << "T-" << fixed << setprecision(2) << icurrent  << ".txt";
 //    sstream_buffer << ref << "T-" << setfill('0')  << setw(6) << icurrent  << ".txt";
-//    string_buffer.clear();
-//    sstream_buffer >> string_buffer;
-//    
-//    // create the output stream
-//    ofstream of_U_n(string_buffer.c_str());
-//    
+    sstream_buffer << ref << "T-"  << icurrent  << ".txt";
+    string_buffer.clear();
+    sstream_buffer >> string_buffer;
+    
+    // create the output stream
+    ofstream of_U_n(string_buffer.c_str());
+    
 //    write all the key->values present the U_n
+    
+    of_U_n << posx << "\t" << posy << endl;
+    
+    
 //    for(int j=0;j<xx;j++){
 //        for(int k=0;k<yy;k++){
 //            of_U_n << u1(j,k) << "\t";
@@ -335,7 +340,7 @@ double Heat(double XX, double YY, double elapsed_time, double amount){
 //                of_U_n << endl;
 //        }
 //    }
-//}
+}
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 //      End Save time step
@@ -409,12 +414,13 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile << "Evaporation                    " << Evaporation << endl;
     tempfile << "Droplet Amount                 " << DropletAmount << endl;
     tempfile << "Threshold                      " << Threshold << endl;
+    tempfile << "Max Number of active droplets  " << MaxActiveDroplets << endl;
     tempfile << "------------------------------------------------------" << endl;
     tempfile << "delta t (seconds) = " << delta_t * t_hat_in_seconds << endl;
-    tempfile << "Tfinal (t hat) = " << tt*delta_t<< endl;
-    tempfile << "Tfinal (seconds) = " << tt*delta_t * t_hat_in_seconds << endl;
-    tempfile << "Tfinal (minutos) = " << tt*delta_t * t_hat_in_seconds / 60.<< endl;
-    tempfile << "Tfinal (horas) = " << tt*delta_t * t_hat_in_seconds / 3600.<< endl;
+    tempfile << "Tfinal (t hat)    = " << tt*delta_t<< endl;
+    tempfile << "Tfinal (seconds)  = " << tt*delta_t * t_hat_in_seconds << endl;
+    tempfile << "Tfinal (minutos)  = " << tt*delta_t * t_hat_in_seconds / 60.<< endl;
+    tempfile << "Tfinal (horas)    = " << tt*delta_t * t_hat_in_seconds / 3600.<< endl;
     tempfile << "------------------------------------------------------" << endl;
     tempfile << "Seed:  " << seed1 << endl;
     
@@ -514,6 +520,7 @@ int main (void){
     //  Activate one ant
     Pop[0].AntIsActive = true;
     
+    //	Start of time cycle
     for (int iter=1; iter <= numiter; iter++) {
 
         Ant::DropletNumberToAdd = 0;
@@ -533,9 +540,10 @@ int main (void){
             Pop[antnumber].AntFilePos << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << endl;
             Pop[antnumber].AntFileVel << Pop[antnumber].AntVelX << "\t" << Pop[antnumber].AntVelY << endl;
 
-            //cout << "The ForceX:   " << Pop[antnumber].ForceX() << endl;
-            //cout << "The ForceY:   " << Pop[antnumber].ForceY() << endl;
-//            cout << "Deposited Phero:   " << Pop[antnumber].AntDepositedPhero(3,3) << endl;
+
+			SaveAnt(Pop[antnumber].AntPosX, Pop[antnumber].AntPosY, iter, to_string(antnumber));
+			
+            
         }
         
         //  Decide to activate another ant or not
