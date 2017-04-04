@@ -3,11 +3,16 @@ Ants07
 https://github.com/todisorder/Ants07.git
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+>> 4 Abril 2017
+
+Com muitas não dá. Vou tentar outras maneiras de
+guardar a feromona.
+
 >> 16 Março 2017
 
 > vou juntar os dois códigos, o linearizado e o não.
 > vou fazer tempos iniciais diferentes para elas.
-
+> OK
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Ants06

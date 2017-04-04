@@ -27,11 +27,11 @@ static string Method;
 static double const numxx = 100.;
 static double const numyy = 100.;
 
-static int const NumberOfAnts = 300;
+static int const NumberOfAnts = 10;
 
 static int const LARGE_NUMBER = 10000000;    //10000000
 
-static int const MaxActiveDroplets = 2000;
+static int const MaxActiveDroplets = 20000;
 
 static int const TestWithGivenTrail = 0;    // 1=true, 0=false
 
@@ -409,12 +409,13 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile << "Evaporation                    " << Evaporation << endl;
     tempfile << "Droplet Amount                 " << DropletAmount << endl;
     tempfile << "Threshold                      " << Threshold << endl;
+    tempfile << "Max Number of active droplets  " << MaxActiveDroplets << endl;
     tempfile << "------------------------------------------------------" << endl;
     tempfile << "delta t (seconds) = " << delta_t * t_hat_in_seconds << endl;
-    tempfile << "Tfinal (t hat) = " << tt*delta_t<< endl;
-    tempfile << "Tfinal (seconds) = " << tt*delta_t * t_hat_in_seconds << endl;
-    tempfile << "Tfinal (minutos) = " << tt*delta_t * t_hat_in_seconds / 60.<< endl;
-    tempfile << "Tfinal (horas) = " << tt*delta_t * t_hat_in_seconds / 3600.<< endl;
+    tempfile << "Tfinal (t hat)    = " << tt*delta_t<< endl;
+    tempfile << "Tfinal (seconds)  = " << tt*delta_t * t_hat_in_seconds << endl;
+    tempfile << "Tfinal (minutos)  = " << tt*delta_t * t_hat_in_seconds / 60.<< endl;
+    tempfile << "Tfinal (horas)    = " << tt*delta_t * t_hat_in_seconds / 3600.<< endl;
     tempfile << "------------------------------------------------------" << endl;
     tempfile << "Seed:  " << seed1 << endl;
     
