@@ -215,9 +215,15 @@ Matrix Ant::Pheromone = Zeros(numxx,numyy);
 int Ant::DropletNumber = 0;
 int Ant::DropletNumberToAdd = 0;
 //int Ant::InactiveDropletsCount = 0;
-Matrix Ant::DropletCentersX = Zeros(LARGE_NUMBER,1);
-Matrix Ant::DropletCentersY = Zeros(LARGE_NUMBER,1);
-Matrix Ant::DropletTimes = Zeros(LARGE_NUMBER,1);
+//Matrix Ant::DropletCentersX = Zeros(LARGE_NUMBER,1);
+//Matrix Ant::DropletCentersY = Zeros(LARGE_NUMBER,1);
+//Matrix Ant::DropletTimes = Zeros(LARGE_NUMBER,1);
+
+Matrix Ant::DropletCentersX = Zeros(MaxActiveDroplets,1);
+Matrix Ant::DropletCentersY = Zeros(MaxActiveDroplets,1);
+Matrix Ant::DropletTimes = Zeros(MaxActiveDroplets,1);
+
+
 //Matrix Ant::DropletAmounts = Zeros(LARGE_NUMBER,1);
 
 /********************************************************************/
