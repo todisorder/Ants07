@@ -143,6 +143,8 @@ public:
     
     static double CurrentTime;
     static Matrix Pheromone;
+    static int CurrentAntNumber;
+    static int NumberOfActiveAnts;
     static int DropletNumber;
     static int DropletNumberToAdd;
     static int InactiveDropletsCount();
@@ -184,7 +186,7 @@ public:
     
     //  Constructors
     Ant () : AntDepositedPhero(numxx, numyy){
-        AntPosX = 0.;
+        AntPosX = 0.656565656;
         AntPosY = 0.;
         AntVelX = -0.1;
         AntVelY = .1;
@@ -212,12 +214,20 @@ public:
 };
 double Ant::CurrentTime = 0.;
 Matrix Ant::Pheromone = Zeros(numxx,numyy);
-int Ant::DropletNumber = 0;
+int Ant::CurrentAntNumber = 0;
+int Ant::NumberOfActiveAnts = 0;
+int Ant::DropletNumber = 1;
 int Ant::DropletNumberToAdd = 0;
 //int Ant::InactiveDropletsCount = 0;
-Matrix Ant::DropletCentersX = Zeros(LARGE_NUMBER,1);
-Matrix Ant::DropletCentersY = Zeros(LARGE_NUMBER,1);
-Matrix Ant::DropletTimes = Zeros(LARGE_NUMBER,1);
+//Matrix Ant::DropletCentersX = Zeros(LARGE_NUMBER,1);
+//Matrix Ant::DropletCentersY = Zeros(LARGE_NUMBER,1);
+//Matrix Ant::DropletTimes = Zeros(LARGE_NUMBER,1);
+
+Matrix Ant::DropletCentersX = Zeros(MaxActiveDropletsPerAnt,NumberOfAnts);
+Matrix Ant::DropletCentersY = Zeros(MaxActiveDropletsPerAnt,NumberOfAnts);
+Matrix Ant::DropletTimes = Zeros(MaxActiveDropletsPerAnt,NumberOfAnts);
+
+
 //Matrix Ant::DropletAmounts = Zeros(LARGE_NUMBER,1);
 
 /********************************************************************/
@@ -262,6 +272,8 @@ void Ant::Walk(){
     double RandomAngle = Uniform(generator);
     double Rzero = SmallNormal(generator);
     
+    double temp = 0.;
+    
     string haha = Method;
 
     ////////////////////////////////////////////////////////
@@ -288,6 +300,9 @@ void Ant::Walk(){
     AntXposNew = AntXposOld + delta_t * (AntVelXNew);
     
     AntYposNew = AntYposOld + delta_t * (AntVelYNew);
+
+//cout << "current a.n.=" << CurrentAntNumber<< endl;
+//cout << "ForceX =" << ForceX() << endl;
 
     ////////////////////////////////////////////////////////
     // End Evolution
@@ -336,12 +351,39 @@ void Ant::Walk(){
 
     DropletNumberToAdd ++    ;
     
+    /*
     DropletCentersX(DropletNumber+DropletNumberToAdd,1) = AntPosX;
     DropletCentersY(DropletNumber+DropletNumberToAdd,1) = AntPosY;
-    
-//    cout <<"Acabo de marcar phero numero " << DropletNumber<< " no ponto (" << AntPosX<<","<<AntPosY<<")"<<endl;
-    
     DropletTimes(DropletNumber+DropletNumberToAdd,1) = CurrentTime;
+    */
+       
+    int index = min(DropletNumber,MaxActiveDropletsPerAnt);
+    	//cout << "HERElka=" << index<< endl;
+    if (DropletNumber <= MaxActiveDropletsPerAnt){
+    	DropletCentersX(index,CurrentAntNumber) = AntPosX;
+    	DropletCentersY(index,CurrentAntNumber) = AntPosY;
+    	DropletTimes(index,CurrentAntNumber) = CurrentTime;
+    
+    }          	
+    else {
+    	for (int ii=1; ii < MaxActiveDropletsPerAnt; ii++){
+	    	temp = DropletCentersX(ii+1,CurrentAntNumber);
+    		DropletCentersX(ii,CurrentAntNumber) = temp;
+    		temp = DropletCentersY(ii+1,CurrentAntNumber);
+    		DropletCentersY(ii,CurrentAntNumber) = temp;
+    		temp = DropletTimes(ii+1,CurrentAntNumber);
+    		DropletTimes(ii,CurrentAntNumber) = temp;
+    		//cout << "Fodeu222" << endl;
+    	}
+    	DropletCentersX(MaxActiveDropletsPerAnt,CurrentAntNumber) = AntPosX;
+    	DropletCentersY(MaxActiveDropletsPerAnt,CurrentAntNumber) = AntPosY;
+    	DropletTimes(MaxActiveDropletsPerAnt,CurrentAntNumber) = CurrentTime;
+    	//cout << "Fodeu222" << endl;
+    }
+    
+       
+    
+   
 
 }
 //////////////////////////////////////////////////////////////////////
@@ -360,21 +402,36 @@ double Ant::PheromoneConcentration(double X, double Y){
     double elapsed_time = 0.;
     double aux = 0.;
     double aux1 = 0.;
-    int Max = MaxActiveDroplets;
+    int Max = MaxActiveDropletsPerAnt;
+    int index = 0;
     
-    for (int droplet=max(1,DropletNumber-Max); droplet < DropletNumber; droplet++) {
-        elapsed_time = current_time - DropletTimes(droplet,1);
-        aux += Heat(X-DropletCentersX(droplet,1),Y-DropletCentersY(droplet,1),elapsed_time,DropletAmount);
+//    for (int droplet=max(1,DropletNumber-Max); droplet < DropletNumber; droplet++) {
+//       elapsed_time = current_time - DropletTimes(droplet,1);
+//     aux += Heat(X-DropletCentersX(droplet,1),Y-DropletCentersY(droplet,1),elapsed_time,DropletAmount);
+//   }
         //  CHANGE to make concentration periodic!! Easy - put this inside 2d loop
         //  ALL this will be computed for EACH point in the sector!
-        
+       
+    for (int antnumber = 1; antnumber <= NumberOfActiveAnts; antnumber++){
+        	for (int droplet=1; droplet < min(DropletNumber,MaxActiveDropletsPerAnt); droplet++) {
+        	elapsed_time = current_time - DropletTimes(droplet,antnumber);
+        	aux += Heat(X-DropletCentersX(droplet,antnumber),Y-DropletCentersY(droplet,antnumber),elapsed_time,DropletAmount);
+ //       	cout << "aux =" << aux<< " antn = " <<antnumber<<" dropn = "<< droplet <<"  elt = "<<elapsed_time << endl;
+ //       	cout << "dropx = " << DropletCentersX(droplet,antnumber)<< " dropy = " <<DropletCentersY(droplet,antnumber)<<  endl;
+        //cout << "pherinsic =" << X-DropletCentersX(droplet,antnumber) << endl;
+ //        cout << "heatt =" << Heat(X-DropletCentersX(droplet,antnumber),Y-DropletCentersY(droplet,antnumber),elapsed_time,DropletAmount) << endl;
+     		}   
     }
+
+// cout << "current a.n.=" << CurrentAntNumber<< endl;
+//cout << "pher =" << aux << endl; 
 
     aux1 = 1.*PheroHigh*exp(-PheroNarrow*abs(X));   // To test with given trail!
     int test = TestWithGivenTrail;
 //  cout << "Phero: " <<SensitivityFunction(aux) + test*SensitivityFunction(aux1) << endl;
     return SensitivityFunction(aux) + test*SensitivityFunction(aux1);
     
+   
 }
 //////////////////////////////////////////////////////////////////////
 //                  END Ant::PheromoneConcentration
@@ -393,7 +450,7 @@ double Ant::PheromoneGradientX(){       //  NOT NEEDED
     double aux2 = 0.;
     double aux3 = 0.;
     double aux4 = 0.;
-    int Max = MaxActiveDroplets;
+    int Max = MaxActiveDropletsPerAnt;
 
     for (int droplet=max(1,DropletNumber-Max); droplet < DropletNumber; droplet++) {
         elapsed_time = current_time - DropletTimes(droplet,1);
@@ -443,7 +500,7 @@ double Ant::PheromoneGradientY(){       //  NOT NEEDED
     double aux1 = 0.;
     double aux2 = 0.;
     double aux3 = 0.;
-    int Max = MaxActiveDroplets;
+    int Max = MaxActiveDropletsPerAnt;
 
     for (int droplet=max(1,DropletNumber-Max); droplet < DropletNumber; droplet++) {
         elapsed_time = current_time - DropletTimes(droplet,1);
