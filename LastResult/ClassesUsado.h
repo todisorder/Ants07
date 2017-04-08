@@ -168,9 +168,11 @@ public:
     string AntFilenamePos;
     string AntFilenamePosLast;
     string AntFilenameVel;
-    ofstream AntFilePos;
-    ofstream AntFilePosLast;
-    ofstream AntFileVel;
+    string AntFilenameFUCK;
+    fstream AntFilePos;
+    fstream AntFilePosLast;
+    fstream AntFileVel;
+    fstream AntFileFUCK;
     
     void Walk();
     

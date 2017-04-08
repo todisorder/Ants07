@@ -15,7 +15,9 @@ cp plot-png.sh  "$Folder"
 cd "$Folder"
 
 ./antsibm"$Version" &&
-mkdir Plots
+echo "1!"
+#mkdir Plots
+echo "2!"
 #sh plot-png.sh &&
 #gnuplot plots-Mass.plt
 #cp ../LogsLast.txt .

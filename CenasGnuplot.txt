@@ -1,4 +1,4 @@
-#plot for [i=1:10] "AntPos-".i.".txt"
+#plot for [i=1:10] "AntPos-".i.".txt" 
 
 do for [t=0:50] {
     outfile = sprintf('animation/bessel%03.0f.png',t)

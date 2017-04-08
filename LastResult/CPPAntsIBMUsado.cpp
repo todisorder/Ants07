@@ -29,9 +29,9 @@ static double const numyy = 100.;
 
 static int const NumberOfAnts = 100;
 
-static int const LARGE_NUMBER = 10000000;    //10000000
+static int const LARGE_NUMBER = 1000;    //10000000
 
-static int const MaxActiveDropletsPerAnt = 3;
+static int const MaxActiveDropletsPerAnt = 300;
 
 static int const TestWithGivenTrail = 0;    // 1=true, 0=false
 
@@ -485,6 +485,7 @@ int main (void){
     
     Ant * Pop;
     Pop = new Ant[NN];
+    
 
     for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
         
@@ -493,17 +494,44 @@ int main (void){
         Pop[antnumber].AntVelY = 0.1*sin(Normal(generator));
         
         Pop[antnumber].AntFilenamePos = "AntPos-"+to_string(antnumber+1)+".txt";
-        Pop[antnumber].AntFilePos.open(Pop[antnumber].AntFilenamePos);
-        cout << Pop[antnumber].AntFilenamePos << endl;
-        
-        Pop[antnumber].AntFilenamePosLast = "AntPosLast-"+to_string(antnumber+1)+".txt";
-        Pop[antnumber].AntFilePosLast.open(Pop[antnumber].AntFilenamePosLast);
-        cout << Pop[antnumber].AntFilenamePosLast << endl;
-        
+        Pop[antnumber].AntFilePos.open(Pop[antnumber].AntFilenamePos,fstream::app);
+//        cout << Pop[antnumber].AntFilenamePos << endl;
+//    }
+    
+//    for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
+
+//        Pop[antnumber].AntFilenamePosLast = "AntPosLast-"+to_string(antnumber+1)+".txt";
+//        Pop[antnumber].AntFilePosLast.open(Pop[antnumber].AntFilenamePosLast,fstream::app);
+//        cout << Pop[antnumber].AntFilenamePosLast << endl;
+//    }
+    
+//    for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
+
         Pop[antnumber].AntFilenameVel = "AntVel-"+to_string(antnumber+1)+".txt";
-        Pop[antnumber].AntFileVel.open(Pop[antnumber].AntFilenameVel);
-        cout << Pop[antnumber].AntFilenameVel << endl;
+        Pop[antnumber].AntFileVel.open(Pop[antnumber].AntFilenameVel,fstream::app);
+        
+//        Pop[antnumber].AntFilenameFUCK = "FUCK-"+to_string(antnumber+1)+".txt";
+//        Pop[antnumber].AntFileFUCK.open(Pop[antnumber].AntFilenameFUCK,fstream::app);
+        
+        
+//        cout << Pop[antnumber].AntFilenameVel << endl;
+
+        if (Pop[antnumber].AntFileVel.is_open())
+        {
+//            ofs << "lorem ipsum";
+            std::cout << "Output operation " << antnumber << " successfully performed\n";
+  //          ofs.close();
+        }
+        else
+        {
+            std::cout << "Error opening file "<< antnumber << "\n";
+        }
     }
+    /******
+     This is the most stupid shit ever... if I have more than 2 file opening loops above, 
+     then the third loop fails after a certain number of opened files, only on Mac!!!!!!
+     Whyyy?
+    ******/
     
     
     
