@@ -27,11 +27,11 @@ static string Method;
 static double const numxx = 100.;
 static double const numyy = 100.;
 
-static int const NumberOfAnts = 10;
+static int const NumberOfAnts = 100;
 
-static int const LARGE_NUMBER = 10000000;    //10000000
+static int const LARGE_NUMBER = 1000;    //10000000
 
-static int const MaxActiveDroplets = 20000;
+static int const MaxActiveDropletsPerAnt = 300;
 
 static int const TestWithGivenTrail = 0;    // 1=true, 0=false
 
@@ -406,15 +406,16 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile << "------------------------------------------------------" << endl;
     tempfile << "Random is " << Turn_off_random << " times normal strength." << endl;
     tempfile << "------------------------------------------------------" << endl;
-    tempfile << "Sensing Area Radius (cm)       " << SensingAreaRadius << endl;
-    tempfile << "Sensing Area Radius (X_hat)    " << SENSING_AREA_RADIUS << endl;
-    tempfile << "Sensing Half Angle             Pi/" << Pi/SensingAreaHalfAngle << endl;
-    tempfile << "Lambda                         " << Lambda << endl;
-    tempfile << "Diffusion                      " << Diffusion << endl;
-    tempfile << "Evaporation                    " << Evaporation << endl;
-    tempfile << "Droplet Amount                 " << DropletAmount << endl;
-    tempfile << "Threshold                      " << Threshold << endl;
-    tempfile << "Max Number of active droplets  " << MaxActiveDroplets << endl;
+    tempfile << "Sensing Area Radius (cm)       	" << SensingAreaRadius << endl;
+    tempfile << "Sensing Area Radius (X_hat)    	" << SENSING_AREA_RADIUS << endl;
+    tempfile << "Sensing Half Angle             	Pi/" << Pi/SensingAreaHalfAngle << endl;
+    tempfile << "Lambda                         	" << Lambda << endl;
+    tempfile << "Diffusion                      	" << Diffusion << endl;
+    tempfile << "Evaporation                    	" << Evaporation << endl;
+    tempfile << "Droplet Amount                 	" << DropletAmount << endl;
+    tempfile << "Threshold                      	" << Threshold << endl;
+    tempfile << "Max Number of active droplets/ant  " << MaxActiveDropletsPerAnt << endl;
+    tempfile << "Max Number of active droplets  	" << MaxActiveDropletsPerAnt*NumberOfAnts << endl;
     tempfile << "------------------------------------------------------" << endl;
     tempfile << "delta t (seconds) = " << delta_t * t_hat_in_seconds << endl;
     tempfile << "Tfinal (t hat)    = " << tt*delta_t<< endl;
@@ -480,9 +481,11 @@ int main (void){
     int totalantnumber = NN;
     
     int ActiveAnts = 1;
+    Ant::NumberOfActiveAnts = ActiveAnts;
     
     Ant * Pop;
     Pop = new Ant[NN];
+    
 
     for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
         
@@ -491,17 +494,44 @@ int main (void){
         Pop[antnumber].AntVelY = 0.1*sin(Normal(generator));
         
         Pop[antnumber].AntFilenamePos = "AntPos-"+to_string(antnumber+1)+".txt";
-        Pop[antnumber].AntFilePos.open(Pop[antnumber].AntFilenamePos);
-        cout << Pop[antnumber].AntFilenamePos << endl;
-        
-        Pop[antnumber].AntFilenamePosLast = "AntPosLast-"+to_string(antnumber+1)+".txt";
-        Pop[antnumber].AntFilePosLast.open(Pop[antnumber].AntFilenamePosLast);
-        cout << Pop[antnumber].AntFilenamePosLast << endl;
-        
+        Pop[antnumber].AntFilePos.open(Pop[antnumber].AntFilenamePos,fstream::app);
+//        cout << Pop[antnumber].AntFilenamePos << endl;
+//    }
+    
+//    for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
+
+//        Pop[antnumber].AntFilenamePosLast = "AntPosLast-"+to_string(antnumber+1)+".txt";
+//        Pop[antnumber].AntFilePosLast.open(Pop[antnumber].AntFilenamePosLast,fstream::app);
+//        cout << Pop[antnumber].AntFilenamePosLast << endl;
+//    }
+    
+//    for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
+
         Pop[antnumber].AntFilenameVel = "AntVel-"+to_string(antnumber+1)+".txt";
-        Pop[antnumber].AntFileVel.open(Pop[antnumber].AntFilenameVel);
-        cout << Pop[antnumber].AntFilenameVel << endl;
+        Pop[antnumber].AntFileVel.open(Pop[antnumber].AntFilenameVel,fstream::app);
+        
+//        Pop[antnumber].AntFilenameFUCK = "FUCK-"+to_string(antnumber+1)+".txt";
+//        Pop[antnumber].AntFileFUCK.open(Pop[antnumber].AntFilenameFUCK,fstream::app);
+        
+        
+//        cout << Pop[antnumber].AntFilenameVel << endl;
+
+        if (Pop[antnumber].AntFileVel.is_open())
+        {
+//            ofs << "lorem ipsum";
+            std::cout << "Output operation " << antnumber << " successfully performed\n";
+  //          ofs.close();
+        }
+        else
+        {
+            std::cout << "Error opening file "<< antnumber << "\n";
+        }
     }
+    /******
+     This is the most stupid shit ever... if I have more than 2 file opening loops above, 
+     then the third loop fails after a certain number of opened files, only on Mac!!!!!!
+     Whyyy?
+    ******/
     
     
     
@@ -526,13 +556,16 @@ int main (void){
         Ant::DropletNumberToAdd = 0;
         Ant::CurrentTime = iter*delta_t;
         
+ 
+        
         for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
             
+            Ant::CurrentAntNumber = antnumber+1;
+                
             if (Pop[antnumber].AntIsActive) {
-                Pop[antnumber].Walk();
+                Pop[antnumber].Walk(); //cout << "Fodeuiter"<< iter<< endl;  
             }
 
-            
             if (ChangedSide == 1) {
                 Pop[antnumber].AntFilePos << endl;
                 ChangedSide = 0;
@@ -540,33 +573,36 @@ int main (void){
             Pop[antnumber].AntFilePos << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << endl;
             Pop[antnumber].AntFileVel << Pop[antnumber].AntVelX << "\t" << Pop[antnumber].AntVelY << endl;
 
-
 //			SaveAnt(Pop[antnumber].AntPosX, Pop[antnumber].AntPosY, iter, to_string(antnumber));
+			   
 			
-            
+			
+			           
         }
         
         //  Decide to activate another ant or not
         
         randomnumber = UniformInteger(generator);
         cout << "Rand: " <<randomnumber << endl;
-        if (randomnumber == 1) {
+        if (randomnumber == 1 && ActiveAnts < totalantnumber) {
             Pop[ActiveAnts].AntIsActive = true;
             ActiveAnts++;
             cout << "Activated ant number " << ActiveAnts << endl;
+            Ant::NumberOfActiveAnts = ActiveAnts;
         }
         
         
         
         
-        Ant::DropletNumber += Ant::DropletNumberToAdd;
+        //Ant::DropletNumber += Ant::DropletNumberToAdd;
+        Ant::DropletNumber++;
         
 
         AntPos << Pop[0].AntPosX << "\t" << Pop[0].AntPosY << endl;
         
         cout << "Iter: " <<iter << endl;
-        cout << "DropletNumber: " << Ant::DropletNumber << endl;
-        cout << "InactiveDropletsCount: " << Ant::InactiveDropletsCount() << endl;
+        cout << "DropletNumber: " << Ant::DropletNumber-1 << endl;
+       // cout << "InactiveDropletsCount: " << Ant::InactiveDropletsCount() << endl;
         
     }// End of time cycle
     
@@ -581,7 +617,7 @@ int main (void){
     cout << "Total number of active ants: " << ActiveAnts << "/" << NN << endl;
     
     cout << "Building Pheromone... " << endl;
-    Ant::BuildPheromone();
+   // Ant::BuildPheromone();
 
     
     ofstream Phero;
@@ -602,7 +638,7 @@ int main (void){
 }
 
 
-
+//	cout << "msg" << endl;
 
 
     

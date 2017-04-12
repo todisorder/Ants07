@@ -3,8 +3,8 @@
 #############################################################
 # Method is: Deltas
 # delta t = 0.05
-# No. of Iterations = 400
-# Final Time = 20
+# No. of Iterations = 10
+# Final Time = 0.5
 # Comments:	
 # X points (for phero visualization only) = 100
 # Y points (for phero visualization only) = 100
@@ -28,10 +28,10 @@ Max Number of active droplets/ant  300
 Max Number of active droplets  	30000
 ------------------------------------------------------
 delta t (seconds) = 0.05
-Tfinal (t hat)    = 1
-Tfinal (seconds)  = 1
-Tfinal (minutos)  = 0.0166667
-Tfinal (horas)    = 0.000277778
+Tfinal (t hat)    = 0.025
+Tfinal (seconds)  = 0.025
+Tfinal (minutos)  = 0.000416667
+Tfinal (horas)    = 6.94444e-06
 ------------------------------------------------------
-Seed:  3400693497
+Seed:  904446123
  

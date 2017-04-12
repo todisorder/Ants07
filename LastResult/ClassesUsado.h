@@ -418,8 +418,8 @@ double Ant::PheromoneConcentration(double X, double Y){
         	for (int droplet=1; droplet < min(DropletNumber,MaxActiveDropletsPerAnt); droplet++) {
         	elapsed_time = current_time - DropletTimes(droplet,antnumber);
         	aux += Heat(X-DropletCentersX(droplet,antnumber),Y-DropletCentersY(droplet,antnumber),elapsed_time,DropletAmount);
- //       	cout << "aux =" << aux<< " antn = " <<antnumber<<" dropn = "<< droplet <<"  elt = "<<elapsed_time << endl;
- //       	cout << "dropx = " << DropletCentersX(droplet,antnumber)<< " dropy = " <<DropletCentersY(droplet,antnumber)<<  endl;
+        	cout << "aux = "<<aux<< " antn = " <<antnumber<<" dropn = "<< droplet <<"  elt = "<<elapsed_time << endl;
+        	cout << "dropx = " << DropletCentersX(droplet,antnumber)<< " dropy = " <<DropletCentersY(droplet,antnumber)<<  endl;
         //cout << "pherinsic =" << X-DropletCentersX(droplet,antnumber) << endl;
  //        cout << "heatt =" << Heat(X-DropletCentersX(droplet,antnumber),Y-DropletCentersY(droplet,antnumber),elapsed_time,DropletAmount) << endl;
      		}   
