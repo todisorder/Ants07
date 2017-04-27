@@ -3,11 +3,12 @@
 #############################################################
 # Method is: Deltas
 # delta t = 0.05
-# No. of Iterations = 10
-# Final Time = 0.5
+# relaxation time tau (s) = 0.1
+# No. of Iterations = 600
+# Final Time = 30
 # Comments:	
-# X points (for phero visualization only) = 100
-# Y points (for phero visualization only) = 100
+# X points (for phero visualization only) = 200
+# Y points (for phero visualization only) = 200
 # Radial discretization of sensing area = 5
 # Angle discretization of sensing area = 5
 # Domain Info:
@@ -22,16 +23,17 @@ Sensing Half Angle             	Pi/4
 Lambda                         	1
 Diffusion                      	0.0002
 Evaporation                    	0.01
-Droplet Amount                 	1e-07
-Threshold                      	1e-05
-Max Number of active droplets/ant  300
-Max Number of active droplets  	30000
+Droplet Amount                 	5e-05
+Droplet Amount per unit time     	0.001
+Threshold                      	0.0001
+Max Number of active droplets/ant  1000
+Max Number of active droplets  	50000
 ------------------------------------------------------
 delta t (seconds) = 0.05
-Tfinal (t hat)    = 0.025
-Tfinal (seconds)  = 0.025
-Tfinal (minutos)  = 0.000416667
-Tfinal (horas)    = 6.94444e-06
+Tfinal (t hat)    = 1.5
+Tfinal (seconds)  = 1.5
+Tfinal (minutos)  = 0.025
+Tfinal (horas)    = 0.000416667
 ------------------------------------------------------
-Seed:  904446123
+Seed:  569532496
  

@@ -151,6 +151,7 @@ public:
     static Matrix DropletTimes;
     static Matrix DropletCentersX;
     static Matrix DropletCentersY;
+    static Matrix DropletIsActive;    
 //    static Matrix DropletAmounts;
                         //  ^^^cf. http://www.tutorialspoint.com/cplusplus/cpp_static_members.htm
                         //  This way (a static Matrix) I don't need the Pheromone class.
@@ -169,10 +170,10 @@ public:
     string AntFilenamePosLast;
     string AntFilenameVel;
     string AntFilenameFUCK;
-    fstream AntFilePos;
-    fstream AntFilePosLast;
-    fstream AntFileVel;
-    fstream AntFileFUCK;
+    ofstream AntFilePos;
+    ofstream AntFilePosLast;
+    ofstream AntFileVel;
+    ofstream AntFileFUCK;
     
     void Walk();
     
@@ -228,6 +229,7 @@ int Ant::DropletNumberToAdd = 0;
 Matrix Ant::DropletCentersX = Zeros(MaxActiveDropletsPerAnt,NumberOfAnts);
 Matrix Ant::DropletCentersY = Zeros(MaxActiveDropletsPerAnt,NumberOfAnts);
 Matrix Ant::DropletTimes = Zeros(MaxActiveDropletsPerAnt,NumberOfAnts);
+Matrix Ant::DropletIsActive = Zeros(MaxActiveDropletsPerAnt,NumberOfAnts);
 
 
 //Matrix Ant::DropletAmounts = Zeros(LARGE_NUMBER,1);
@@ -381,8 +383,12 @@ void Ant::Walk(){
     	DropletCentersY(MaxActiveDropletsPerAnt,CurrentAntNumber) = AntPosY;
     	DropletTimes(MaxActiveDropletsPerAnt,CurrentAntNumber) = CurrentTime;
     	//cout << "Fodeu222" << endl;
+    	
     }
     
+    DropletIsActive(index,CurrentAntNumber) = 1.;
+//    	DropletIsActive.Print();
+//     	DropletTimes.Print();
        
     
    
@@ -417,11 +423,9 @@ double Ant::PheromoneConcentration(double X, double Y){
     for (int antnumber = 1; antnumber <= NumberOfActiveAnts; antnumber++){
         	for (int droplet=1; droplet < min(DropletNumber,MaxActiveDropletsPerAnt); droplet++) {
         	elapsed_time = current_time - DropletTimes(droplet,antnumber);
-        	aux += Heat(X-DropletCentersX(droplet,antnumber),Y-DropletCentersY(droplet,antnumber),elapsed_time,DropletAmount);
-        	cout << "aux = "<<aux<< " antn = " <<antnumber<<" dropn = "<< droplet <<"  elt = "<<elapsed_time << endl;
-//    	cout << "dropx = " << DropletCentersX(droplet,antnumber)<< " dropy = " <<DropletCentersY(droplet,antnumber)<<  endl;
-        //cout << "pherinsic =" << X-DropletCentersX(droplet,antnumber) << endl;
-//        cout << "heatt =" << Heat(X-DropletCentersX(droplet,antnumber),Y-DropletCentersY(droplet,antnumber),elapsed_time,DropletAmount) << endl;
+        	aux += DropletIsActive(droplet,antnumber) * Heat(X-DropletCentersX(droplet,antnumber),Y-DropletCentersY(droplet,antnumber),elapsed_time,DropletAmount);
+        	// Do not read the last droplets, they are deltas.
+        	//cout << "El time" << elapsed_time << endl;
      		}   
     }
 
@@ -752,14 +756,15 @@ void Ant::BuildPheromone(){
     double elapsed_time = 0.;
     double aux = 0.;
 
-    for (int i=1; i<=numxx; i++) {
+/*    for (int i=1; i<=numxx; i++) {
         for (int j=1; j<=numyy; j++) {
             aux = 0.;
             for (int droplet=1; droplet < DropletNumber-DropletNumberToAdd; droplet++) {    // Do not read the last droplets, they are deltas.
                 elapsed_time = current_time - DropletTimes(droplet,1);
 		// cout << "active droplet " << droplet << endl;
                 aux += Heat(x_1+i*delta_x-DropletCentersX(droplet,1),y_1+j*delta_y-DropletCentersY(droplet,1),elapsed_time,DropletAmount);
-                
+              
+             
             }
 
             
@@ -767,8 +772,28 @@ void Ant::BuildPheromone(){
             Pheromone(i,j) += TestWithGivenTrail*PheroHigh*exp(-PheroNarrow*abs(x_1+i*delta_x));   // To test with given trail!
         }
     }
+    */
+    
+        for (int i=1; i<=numxx; i++) {
+        for (int j=1; j<=numyy; j++) {
+            aux = 0.;
+            
+			for (int antnumber = 1; antnumber <= NumberOfActiveAnts; antnumber++){
+        	for (int droplet=1; droplet < min(DropletNumber,MaxActiveDropletsPerAnt)-1; droplet++) {
+        	elapsed_time = current_time - DropletTimes(droplet,antnumber);
+        	//cout << "El time" << elapsed_time << endl;
+        	aux += DropletIsActive(droplet,antnumber) * Heat(x_1+i*delta_x-DropletCentersX(droplet,antnumber),y_1+j*delta_y-DropletCentersY(droplet,antnumber),elapsed_time,DropletAmount);
+
+     		}   
+   		 }
+            
+            Pheromone(i,j) = aux;
+            Pheromone(i,j) += TestWithGivenTrail*PheroHigh*exp(-PheroNarrow*abs(x_1+i*delta_x));   // To test with given trail!
+        }
+    }
 
     
+ 
 }
 
 

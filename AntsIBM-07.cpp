@@ -24,14 +24,14 @@ using namespace std;
 
 static string Method;
 
-static double const numxx = 100.;
-static double const numyy = 100.;
+static double const numxx = 200.;
+static double const numyy = 200.;
 
-static int const NumberOfAnts = 100;
+static int const NumberOfAnts = 50;
 
 static int const LARGE_NUMBER = 1000;    //10000000
 
-static int const MaxActiveDropletsPerAnt = 300;
+static int const MaxActiveDropletsPerAnt = 1000;
 
 static int const TestWithGivenTrail = 0;    // 1=true, 0=false
 
@@ -59,7 +59,7 @@ static double const Turn_off_random = 1.*1.;    //*0.02;
 static double const RegularizingEpsilon = 0.01;
 
 //  This is pheromone detection threshold, but not exactly. It's complicated.
-static double const Threshold = 0.00001; //   Explained in the Readme...   0.1
+static double const Threshold = 0.0001; //   Explained in the Readme...  0.00001
 
 
 //////////////////////////////////////////////////////
@@ -109,7 +109,8 @@ static double const Evaporation = 0.01;        //0.005
 
 //  How much pheromone each ant deposits... not sure if I want this,
 //  or the member vector in the Ant class.
-static double const DropletAmount = 1.*.1*.000001;        //0.00001
+static double const DropletAmountPerUnitTime = 1.*.1*.01;        //0.00001
+static double const DropletAmount = DropletAmountPerUnitTime * delta_t;        //0.00001
 
 string SensitivityMethod;
 
@@ -393,6 +394,7 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile << "#############################################################"<<endl;
     tempfile << "# Method is: "<< Method << endl;
     tempfile << "# delta t = "<< delta_t<< endl;
+    tempfile << "# relaxation time tau (s) = "<< tau << endl;
     tempfile << "# No. of Iterations = "<< data.numiter << endl;
     tempfile << "# Final Time = "<< data.numiter * delta_t << endl;
     tempfile << "# Comments:" << "\t" << COMM <<endl;
@@ -413,6 +415,7 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile << "Diffusion                      	" << Diffusion << endl;
     tempfile << "Evaporation                    	" << Evaporation << endl;
     tempfile << "Droplet Amount                 	" << DropletAmount << endl;
+    tempfile << "Droplet Amount p/ unit time        " << DropletAmountPerUnitTime << endl;
     tempfile << "Threshold                      	" << Threshold << endl;
     tempfile << "Max Number of active droplets/ant  " << MaxActiveDropletsPerAnt << endl;
     tempfile << "Max Number of active droplets  	" << MaxActiveDropletsPerAnt*NumberOfAnts << endl;
@@ -494,7 +497,7 @@ int main (void){
         Pop[antnumber].AntVelY = 0.1*sin(Normal(generator));
         
         Pop[antnumber].AntFilenamePos = "AntPos-"+to_string(antnumber+1)+".txt";
-        Pop[antnumber].AntFilePos.open(Pop[antnumber].AntFilenamePos,fstream::app);
+        Pop[antnumber].AntFilePos.open(Pop[antnumber].AntFilenamePos,ofstream::app);
 //        cout << Pop[antnumber].AntFilenamePos << endl;
 //    }
     
@@ -508,7 +511,7 @@ int main (void){
 //    for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
 
         Pop[antnumber].AntFilenameVel = "AntVel-"+to_string(antnumber+1)+".txt";
-        Pop[antnumber].AntFileVel.open(Pop[antnumber].AntFilenameVel,fstream::app);
+        Pop[antnumber].AntFileVel.open(Pop[antnumber].AntFilenameVel,ofstream::app);
         
 //        Pop[antnumber].AntFilenameFUCK = "FUCK-"+to_string(antnumber+1)+".txt";
 //        Pop[antnumber].AntFileFUCK.open(Pop[antnumber].AntFilenameFUCK,fstream::app);
@@ -617,7 +620,7 @@ int main (void){
     cout << "Total number of active ants: " << ActiveAnts << "/" << NN << endl;
     
     cout << "Building Pheromone... " << endl;
-   // Ant::BuildPheromone();
+    Ant::BuildPheromone();
 
     
     ofstream Phero;
