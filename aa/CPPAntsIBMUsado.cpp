@@ -70,7 +70,7 @@ static double const Threshold = 0.0001; //   Explained in the Readme...  0.00001
 static double const t_hat_in_seconds = 1.;
 
 //  Space scale X_hat em centimetros
-static double const X_hat_in_cm = 1.73;
+static double const X_hat_in_cm = 1.;                  // 1.73;
 
 //  Relaxation time tau em segundos:
 static double const tau = .1;         //    0.5
@@ -387,7 +387,7 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile.open("DataUsed.txt");
     string tempinfo;
     
-    double tt = data.numiter * delta_t;
+    double tt = data.numiter ;
     
     tempfile << "#############################################################"<<endl;
     tempfile << "#############################################################"<<endl;
@@ -518,6 +518,11 @@ int main (void){
         
         
 //        cout << Pop[antnumber].AntFilenameVel << endl;
+        
+        
+        Pop[antnumber].AntFilePos << "# AntPos X" << "\t" <<  "# AntPos Y" << "\t" <<  "# Distance form nest" << "\t" << endl;
+        Pop[antnumber].AntFileVel << "# AntVel X" << "\t" <<  "# AntVel Y" << "\t" <<  "# Speed" << "\t" << endl;
+        
 
         if (Pop[antnumber].AntFileVel.is_open())
         {
@@ -573,8 +578,8 @@ int main (void){
                 Pop[antnumber].AntFilePos << endl;
                 ChangedSide = 0;
             }
-            Pop[antnumber].AntFilePos << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << endl;
-            Pop[antnumber].AntFileVel << Pop[antnumber].AntVelX << "\t" << Pop[antnumber].AntVelY << endl;
+            Pop[antnumber].AntFilePos << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << "\t" << sqrt(Pop[antnumber].AntPosX*Pop[antnumber].AntPosX + Pop[antnumber].AntPosY*Pop[antnumber].AntPosY) << endl;
+            Pop[antnumber].AntFileVel << Pop[antnumber].AntVelX << "\t" << Pop[antnumber].AntVelY << "\t" << sqrt(Pop[antnumber].AntVelX*Pop[antnumber].AntVelX + Pop[antnumber].AntVelY*Pop[antnumber].AntVelY) << endl;
 
 //			SaveAnt(Pop[antnumber].AntPosX, Pop[antnumber].AntPosY, iter, to_string(antnumber));
 			   
@@ -622,7 +627,7 @@ int main (void){
     cout << "Building Pheromone... " << endl;
     Ant::BuildPheromone();
 
-    
+/************   Deprecated:
     ofstream Phero;
     Phero.open("Phero.txt");
     for(int j=1;j<=numxx;j++){
@@ -633,7 +638,7 @@ int main (void){
         }
     }
     Phero.close();
-
+*/
 
     
     

@@ -189,7 +189,7 @@ public:
     
     //  Constructors
     Ant () : AntDepositedPhero(numxx, numyy){
-        AntPosX = 0.656565656;
+        AntPosX = 0.;
         AntPosY = 0.;
         AntVelX = -0.1;
         AntVelY = .1;
