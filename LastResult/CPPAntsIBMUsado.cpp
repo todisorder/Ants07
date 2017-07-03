@@ -24,8 +24,8 @@ using namespace std;
 
 static string Method;
 
-static double const numxx = 200.;
-static double const numyy = 200.;
+static double const numxx = 100.;
+static double const numyy = 100.;
 
 static int const NumberOfAnts = 50;
 
@@ -102,7 +102,7 @@ static double const Lambda = 1.;         //10./SENSING_AREA_RADIUS;????
 static double const delta_t = 0.05;   //     0.05
 
 //  Pheromone Diffusion:
-static double const Diffusion = 0.0002;      // .005
+static double const Diffusion = 0.002;      // .0002
 
 //  Pheromone Evaporation:
 static double const Evaporation = 0.01;        //0.005
@@ -520,8 +520,8 @@ int main (void){
 //        cout << Pop[antnumber].AntFilenameVel << endl;
         
         
-        Pop[antnumber].AntFilePos << "# AntPos X" << "\t" <<  "# AntPos Y" << "\t" <<  "# Distance form nest" << "\t" << endl;
-        Pop[antnumber].AntFileVel << "# AntVel X" << "\t" <<  "# AntVel Y" << "\t" <<  "# Speed" << "\t" << endl;
+        Pop[antnumber].AntFilePos << "#1 AntPos X" << "\t" <<  "#2 AntPos Y" << "\t" <<  "#3 Distance form nest" << "\t" << endl;
+        Pop[antnumber].AntFileVel << "#1 AntVel X" << "\t" <<  "#2 AntVel Y" << "\t" <<  "#3 Speed" << "\t" << "#4 Turning Angle Rad" << "\t" << "\t" << "#5 Turning Angle Deg" << "\t" << "#6 Detected Phero Left" << "\t"<< "#7 Detected Phero Right" << "\t" << endl;
         
 
         if (Pop[antnumber].AntFileVel.is_open())
@@ -579,7 +579,7 @@ int main (void){
                 ChangedSide = 0;
             }
             Pop[antnumber].AntFilePos << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << "\t" << sqrt(Pop[antnumber].AntPosX*Pop[antnumber].AntPosX + Pop[antnumber].AntPosY*Pop[antnumber].AntPosY) << endl;
-            Pop[antnumber].AntFileVel << Pop[antnumber].AntVelX << "\t" << Pop[antnumber].AntVelY << "\t" << sqrt(Pop[antnumber].AntVelX*Pop[antnumber].AntVelX + Pop[antnumber].AntVelY*Pop[antnumber].AntVelY) << endl;
+            Pop[antnumber].AntFileVel << Pop[antnumber].AntVelX << "\t" << Pop[antnumber].AntVelY << "\t" << sqrt(Pop[antnumber].AntVelX*Pop[antnumber].AntVelX + Pop[antnumber].AntVelY*Pop[antnumber].AntVelY) << "\t" << Pop[antnumber].AntTurningAngle << "\t" << Pop[antnumber].AntTurningAngle*(180./Pi) << "\t" << Pop[antnumber].AntPheroL << "\t" << Pop[antnumber].AntPheroR << endl;
 
 //			SaveAnt(Pop[antnumber].AntPosX, Pop[antnumber].AntPosY, iter, to_string(antnumber));
 			   
@@ -627,7 +627,7 @@ int main (void){
     cout << "Building Pheromone... " << endl;
     Ant::BuildPheromone();
 
-/************   Deprecated:
+///************   Deprecated:
     ofstream Phero;
     Phero.open("Phero.txt");
     for(int j=1;j<=numxx;j++){
@@ -638,7 +638,7 @@ int main (void){
         }
     }
     Phero.close();
-*/
+//*/
 
     
     

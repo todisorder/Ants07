@@ -26,6 +26,7 @@ echo "2!"
 touch ../LastResult/Paranaochatearcomerrosdorm.txt
 rm -r ../LastResult/*
 cp -r * ../LastResult/
+cp Phero.txt ../LastResult/
 
 echo "Done!"
 

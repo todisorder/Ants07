@@ -161,6 +161,9 @@ public:
     double AntPosY;
     double AntVelX;
     double AntVelY;
+    double AntTurningAngle;
+    double AntPheroL;               // Only for deltas method.
+    double AntPheroR;               // Only for deltas method.
     double AntHomeDirX;
     double AntHomeDirY;
     bool AntIsActive;
@@ -347,10 +350,14 @@ void Ant::Walk(){
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
 
+    AntTurningAngle =  Angle(AntVelXNew,AntVelYNew) - Angle(AntVelXOld,AntVelYOld);         //Angle(AntVelXNew-AntVelX,AntVelYNew-AntVelY);
+    
     AntPosX = AntXposNew;
     AntPosY = AntYposNew;
     AntVelX = AntVelXNew;
     AntVelY = AntVelYNew;
+    
+
     
 
     DropletNumberToAdd ++    ;
@@ -571,7 +578,8 @@ double Ant::ForceX(){
         aux = pointr*cos(pointthetaL) * PheromoneConcentration(AntPosX + pointr*cos(pointthetaL), AntPosY + pointr*sin(pointthetaL)) + pointr*cos(pointthetaR) * PheromoneConcentration(AntPosX + pointr*cos(pointthetaR), AntPosY + pointr*sin(pointthetaR)) ;
         auxX = PheromoneConcentration(AntPosX + pointr*cos(pointthetaL), AntPosY + pointr*sin(pointthetaL)) +  PheromoneConcentration(AntPosX + pointr*cos(pointthetaR), AntPosY + pointr*sin(pointthetaR)) ;
         
-        
+        AntPheroL = PheromoneConcentration(AntPosX + pointr*cos(pointthetaL), AntPosY + pointr*sin(pointthetaL));
+        AntPheroR = PheromoneConcentration(AntPosX + pointr*cos(pointthetaR), AntPosY + pointr*sin(pointthetaR));
         
         // FALTA a correção para ser periodico!!!!!!!!!!!!!
         
