@@ -52,7 +52,7 @@ uniform_int_distribution<int> UniformInteger(0,20);      // Uniformly distribute
 // Normal(mean,stddev)
 // Usage:
 // double number = Normal(generator);
-static double const Turn_off_random = 1.*1.;    //*0.02;
+static double const Turn_off_random = 10.*1.;    //*0.02;
 //  ^^^ 0. = No Random!
 
 //	Parameter for Regularizing Function
@@ -513,8 +513,8 @@ int main (void){
         Pop[antnumber].AntFilenameVel = "AntVel-"+to_string(antnumber+1)+".txt";
         Pop[antnumber].AntFileVel.open(Pop[antnumber].AntFilenameVel,ofstream::app);
         
-//        Pop[antnumber].AntFilenameFUCK = "FUCK-"+to_string(antnumber+1)+".txt";
-//        Pop[antnumber].AntFileFUCK.open(Pop[antnumber].AntFilenameFUCK,fstream::app);
+        Pop[antnumber].AntFilenamePhase = "AntPhase-"+to_string(antnumber+1)+".txt";
+        Pop[antnumber].AntFilePhase.open(Pop[antnumber].AntFilenamePhase,ofstream::app);
         
         
 //        cout << Pop[antnumber].AntFilenameVel << endl;
@@ -522,6 +522,7 @@ int main (void){
         
         Pop[antnumber].AntFilePos << "#1 AntPos X" << "\t" <<  "#2 AntPos Y" << "\t" <<  "#3 Distance form nest" << "\t" << endl;
         Pop[antnumber].AntFileVel << "#1 AntVel X" << "\t" <<  "#2 AntVel Y" << "\t" <<  "#3 Speed" << "\t" << "#4 Turning Angle Rad" << "\t" << "\t" << "#5 Turning Angle Deg" << "\t" << "#6 Detected Phero Left" << "\t"<< "#7 Detected Phero Right" << "\t" << endl;
+        Pop[antnumber].AntFilePhase << "#1 AntPos X" << "\t" << "#2 AntVel X" << "\t" <<  "#3 AntPos Y" << "\t" << "#4 AntVel Y" << "\t" << endl;
         
 
         if (Pop[antnumber].AntFileVel.is_open())
@@ -580,6 +581,8 @@ int main (void){
             }
             Pop[antnumber].AntFilePos << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << "\t" << sqrt(Pop[antnumber].AntPosX*Pop[antnumber].AntPosX + Pop[antnumber].AntPosY*Pop[antnumber].AntPosY) << endl;
             Pop[antnumber].AntFileVel << Pop[antnumber].AntVelX << "\t" << Pop[antnumber].AntVelY << "\t" << sqrt(Pop[antnumber].AntVelX*Pop[antnumber].AntVelX + Pop[antnumber].AntVelY*Pop[antnumber].AntVelY) << "\t" << Pop[antnumber].AntTurningAngle << "\t" << Pop[antnumber].AntTurningAngle*(180./Pi) << "\t" << Pop[antnumber].AntPheroL << "\t" << Pop[antnumber].AntPheroR << endl;
+            Pop[antnumber].AntFilePhase << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntVelX << "\t" <<  Pop[antnumber].AntPosY << "\t" << Pop[antnumber].AntVelY << "\t" << endl;
+
 
 //			SaveAnt(Pop[antnumber].AntPosX, Pop[antnumber].AntPosY, iter, to_string(antnumber));
 			   

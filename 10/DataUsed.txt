@@ -7,8 +7,8 @@
 # No. of Iterations = 500
 # Final Time = 25
 # Comments:	
-# X points (for phero visualization only) = 200
-# Y points (for phero visualization only) = 200
+# X points (for phero visualization only) = 100
+# Y points (for phero visualization only) = 100
 # Radial discretization of sensing area = 5
 # Angle discretization of sensing area = 5
 # Domain Info:
@@ -21,7 +21,7 @@ Sensing Area Radius (cm)       	0.8
 Sensing Area Radius (X_hat)    	0.8
 Sensing Half Angle             	Pi/4
 Lambda                         	1
-Diffusion                      	0.0002
+Diffusion                      	0.002
 Evaporation                    	0.01
 Droplet Amount                 	5e-05
 Droplet Amount p/ unit time        0.001
@@ -35,5 +35,5 @@ Tfinal (seconds)  = 25
 Tfinal (minutos)  = 0.416667
 Tfinal (horas)    = 0.00694444
 ------------------------------------------------------
-Seed:  3473161133
+Seed:  364375354
  

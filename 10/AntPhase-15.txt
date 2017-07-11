@@ -1,0 +1,1001 @@
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0	0.0955322	0	0.099998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.0149715	0.299429	0.00868278	0.173656	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.0342713	0.385996	0.0199713	0.225771	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.0558881	0.432337	0.0332602	0.265778	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.0776726	0.43569	0.047844	0.291676	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.0984088	0.414723	0.0653469	0.350057	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.116681	0.365442	0.0864816	0.422695	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.130178	0.269945	0.111272	0.495804	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.133905	0.0745468	0.141363	0.601826	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.147019	0.262261	0.169202	0.556786	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.152513	0.109891	0.199553	0.607002	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.16488	0.247331	0.227195	0.552852	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.172342	0.149246	0.257939	0.614871	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.183444	0.222049	0.285474	0.550714	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.191533	0.161781	0.313669	0.563899	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.201885	0.207021	0.33906	0.507814	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.211048	0.183273	0.365046	0.519713	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.219667	0.172373	0.390751	0.514096	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.230059	0.20785	0.416718	0.519343	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.23923	0.183419	0.443281	0.531257	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.25125	0.240385	0.468369	0.501767	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.260175	0.178509	0.496027	0.553162	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.275749	0.311483	0.52268	0.533056	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.284452	0.174057	0.553296	0.612327	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.299883	0.308621	0.579142	0.516912	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.309811	0.198556	0.60759	0.568969	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.324414	0.292052	0.63198	0.487797	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.335962	0.23097	0.660096	0.562319	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.349379	0.268336	0.68481	0.494278	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.360172	0.215869	0.710779	0.519382	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.37489	0.294363	0.736706	0.518549	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.386359	0.229378	0.762241	0.510683	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.399209	0.256989	0.787451	0.504214	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.411288	0.241589	0.812981	0.510588	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.424653	0.267301	0.836433	0.469048	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.435392	0.214773	0.86289	0.529132	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.453591	0.363979	0.885076	0.443725	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.464825	0.224674	0.912587	0.550214	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.481027	0.32405	0.939282	0.533907	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.494385	0.267163	0.965839	0.531145	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.509074	0.29378	0.990658	0.496376	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.522108	0.260668	1.01712	0.529258	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.538236	0.322563	1.04015	0.460496	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.551608	0.267452	1.0657	0.511123	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.566873	0.305282	1.08992	0.484395	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.580942	0.281389	1.11397	0.480999	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.593867	0.258506	1.13754	0.471311	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.609309	0.308832	1.15987	0.446593	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.621796	0.249738	1.18476	0.497799	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.63952	0.354476	1.20694	0.443677	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.652693	0.263458	1.23283	0.517741	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.67063	0.358747	1.25383	0.419987	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.683444	0.256286	1.2797	0.51745	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.702598	0.38308	1.30194	0.444808	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.716171	0.271453	1.32819	0.525015	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.735186	0.380301	1.35114	0.45902	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.750222	0.300717	1.37584	0.493952	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.76807	0.35697	1.39892	0.461583	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.78183	0.275202	1.42314	0.484338	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.801088	0.385157	1.44389	0.415134	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.814514	0.268507	1.47168	0.555718	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.834944	0.408613	1.49504	0.467159	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.849136	0.283842	1.52187	0.536703	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.869521	0.407692	1.54368	0.436212	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.88251	0.259779	1.57203	0.56703	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.904185	0.433499	1.59387	0.43673	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.918092	0.278148	1.62156	0.55376	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.939259	0.423342	1.64503	0.469434	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.953254	0.279893	1.67342	0.567876	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.97475	0.429929	1.69638	0.459162	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+0.985793	0.22086	1.72295	0.53147	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.00768	0.437635	1.74476	0.436131	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.02021	0.25066	1.77271	0.5589	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.03979	0.39173	1.79394	0.424596	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.05272	0.258558	1.82105	0.542349	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.07358	0.417225	1.84362	0.451314	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.09027	0.333647	1.87227	0.572949	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.10859	0.366521	1.89729	0.500444	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.12491	0.326327	1.92357	0.52566	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.14275	0.356846	1.94731	0.474751	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.15707	0.28634	1.97302	0.514178	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.17679	0.394366	1.99668	0.473273	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.18983	0.260817	2.022	0.506337	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.20862	0.375772	2.04394	0.438802	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.22163	0.260365	2.07099	0.541055	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.24086	0.384611	2.09347	0.449595	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.2536	0.25469	2.1215	0.560541	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.2749	0.426079	2.14482	0.466373	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.28821	0.26622	2.17326	0.568895	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.30774	0.390529	2.19694	0.473626	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.3212	0.269193	2.22579	0.576956	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.34104	0.396722	2.24994	0.48295	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.35388	0.256796	2.27757	0.552657	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.37156	0.35372	2.30073	0.463142	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.38346	0.238042	2.32582	0.501821	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.40387	0.408046	2.34823	0.448206	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.41667	0.256019	2.37684	0.572241	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.43577	0.382032	2.40194	0.501931	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.44915	0.267714	2.42948	0.550917	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.46614	0.339778	2.4541	0.49241	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.47772	0.2315	2.47838	0.485526	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.49437	0.332944	2.50105	0.453346	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.50469	0.20654	2.52997	0.578462	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.52414	0.388955	2.55419	0.484452	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.533	0.177284	2.58175	0.551031	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.55248	0.389476	2.60558	0.476691	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.56542	0.258771	2.63431	0.574697	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.58493	0.390257	2.65713	0.456284	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.59646	0.230585	2.68641	0.585651	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.61499	0.370666	2.71066	0.484877	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.62586	0.217309	2.73788	0.544525	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.64428	0.368404	2.76011	0.444561	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.65597	0.233903	2.78705	0.538743	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.67475	0.375634	2.80948	0.448673	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.68561	0.217034	2.83791	0.568637	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.7046	0.379871	2.86207	0.483103	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.71446	0.197134	2.89077	0.574069	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.73313	0.373539	2.91477	0.479979	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.74413	0.219849	2.94335	0.571698	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.76316	0.380612	2.96765	0.485927	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.77491	0.23505	2.99648	0.576529	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.79299	0.361548	3.02147	0.49988	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.80255	0.191285	3.05018	0.574117	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.82166	0.382199	3.07365	0.469397	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.83267	0.220161	3.1023	0.573034	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.85139	0.374368	3.12643	0.482711	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.86129	0.198085	3.15433	0.557901	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.88007	0.375511	3.17825	0.478325	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.89026	0.20396	3.20897	0.614514	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.90879	0.370533	3.23474	0.515416	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.91783	0.180724	3.26269	0.558864	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.93656	0.37464	3.28663	0.478852	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.94846	0.238053	3.31333	0.534004	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.96476	0.325897	3.33754	0.484282	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.97763	0.257465	3.36327	0.514573	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+1.99185	0.284454	3.38804	0.49548	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.00353	0.233612	3.41334	0.505814	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.01856	0.300519	3.43799	0.493129	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.02891	0.207023	3.46434	0.52702	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.04647	0.351205	3.48716	0.45633	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.05744	0.219306	3.51523	0.561506	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.07528	0.356778	3.53974	0.490033	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.08726	0.239661	3.56647	0.534661	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.10391	0.333115	3.59189	0.508455	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.11693	0.260227	3.61958	0.553658	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.13128	0.287176	3.64654	0.53939	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.1453	0.280409	3.67378	0.544674	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.15977	0.289359	3.69925	0.50944	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.17089	0.2224	3.72551	0.525196	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.18749	0.331868	3.74974	0.484512	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.19926	0.235413	3.77666	0.538559	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.21579	0.330673	3.80077	0.48205	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.22565	0.197231	3.82721	0.528927	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.24333	0.353655	3.85064	0.46855	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.25451	0.223562	3.87777	0.542642	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.27165	0.342814	3.90184	0.481427	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.28337	0.234316	3.93008	0.564739	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.30096	0.351874	3.9555	0.50845	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.31314	0.243552	3.98178	0.525477	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.32767	0.290549	4.00659	0.49617	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.34085	0.263688	4.03245	0.517341	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.35503	0.28356	4.05765	0.503874	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.36822	0.263698	4.08324	0.511849	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.38084	0.252553	4.10907	0.51659	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.39388	0.260819	4.13397	0.497985	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.40572	0.236627	4.16018	0.524196	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.41877	0.261023	4.18326	0.461579	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.42976	0.219824	4.2087	0.508961	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.44436	0.292131	4.23247	0.475297	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.45561	0.224972	4.25861	0.522871	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.46785	0.244725	4.28457	0.519173	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.48014	0.245735	4.3106	0.520521	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.49145	0.22623	4.33666	0.521183	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.5035	0.241055	4.3631	0.528901	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.51605	0.250904	4.38838	0.505602	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.52797	0.238512	4.41395	0.511391	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.53987	0.237931	4.43958	0.512588	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.54929	0.188411	4.46476	0.50362	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.5606	0.226251	4.49002	0.505188	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.57304	0.248851	4.51458	0.491149	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.58321	0.203388	4.54043	0.517035	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.59455	0.226701	4.56717	0.534883	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.60619	0.232838	4.59296	0.515679	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.6182	0.240286	4.61941	0.528943	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.63052	0.24636	4.64544	0.520737	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.64125	0.214504	4.67123	0.515665	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.65233	0.221715	4.69705	0.516534	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.66313	0.21585	4.72299	0.518825	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.67556	0.248652	4.74809	0.502013	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.6843	0.174836	4.77162	0.4706	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.69549	0.223889	4.79622	0.491978	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.70671	0.2244	4.8215	0.505596	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.71767	0.219056	4.84788	0.527517	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.72866	0.219953	4.8755	0.552499	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.73839	0.194414	4.9027	0.543979	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.7471	0.17434	4.93007	0.547366	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.75813	0.22057	4.95724	0.543307	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.7696	0.229424	4.9821	0.497368	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.78051	0.218071	5.00539	0.465612	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.79135	0.216861	5.03052	0.502775	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.8023	0.218958	5.05611	0.51179	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.81178	0.189738	5.08429	0.563531	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.82293	0.222869	5.112	0.554103	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.83355	0.212458	5.13819	0.523992	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.84389	0.206874	5.16373	0.510743	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.85448	0.211816	5.18956	0.516595	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.86603	0.230844	5.21494	0.507589	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.87883	0.255985	5.24051	0.511282	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.88971	0.217618	5.26681	0.52606	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.90051	0.216045	5.29325	0.528881	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.90892	0.168236	5.32065	0.548037	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.9175	0.171674	5.34846	0.556208	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.92698	0.189454	5.37715	0.573766	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.93758	0.212113	5.40601	0.577096	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.9479	0.206364	5.43331	0.546108	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.95857	0.213469	5.45918	0.517366	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.96977	0.223896	5.48463	0.509047	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.98046	0.213794	5.5114	0.535383	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.99054	0.201693	5.53688	0.509535	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+2.99968	0.182732	5.56295	0.521344	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.00997	0.205739	5.58974	0.535843	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.0196	0.192591	5.61592	0.523653	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.02719	0.151841	5.64214	0.524364	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.03367	0.129654	5.66678	0.492834	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.04216	0.169757	5.69206	0.505473	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.0504	0.164807	5.71867	0.532251	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.05849	0.16175	5.74501	0.526862	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.06722	0.174606	5.77156	0.531002	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.07318	0.119342	5.79917	0.552112	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.08202	0.176708	5.82642	0.545144	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.09059	0.171381	5.85344	0.540397	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.10083	0.204728	5.87969	0.524991	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.10917	0.166831	5.90656	0.537398	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.11717	0.160018	5.93397	0.548126	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.126	0.176662	5.96161	0.55273	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.13309	0.141794	5.98821	0.532081	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.14192	0.176519	6.01508	0.537315	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.14972	0.156137	6.04134	0.525232	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.1568	0.141497	6.06686	0.510455	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.16499	0.163847	6.09392	0.541171	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.17055	0.111178	6.12157	0.552998	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.17647	0.118331	6.14921	0.552895	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.18184	0.107488	6.17797	0.575076	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.18705	0.10423	6.20536	0.547843	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.19294	0.117808	6.23357	0.564293	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.19999	0.140872	6.26332	0.594991	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.20308	0.0619175	6.29251	0.583794	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.20853	0.108944	6.3217	0.583721	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.21119	0.0532386	6.35117	0.58948	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.21618	0.099739	6.37897	0.555995	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.21834	0.0431687	6.40796	0.579644	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.22233	0.079826	6.43613	0.56345	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.22525	0.0584705	6.46437	0.564915	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.229	0.0750269	6.49129	0.538237	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.23091	0.0381406	6.5201	0.576366	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.23465	0.0747176	6.54917	0.581287	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.23635	0.0341903	6.57845	0.58559	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.2398	0.0690008	6.60841	0.599242	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.23932	-0.00971065	6.63857	0.60324	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.24236	0.060886	6.66731	0.5748	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.2445	0.0427494	6.69556	0.565024	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.24455	0.00091355	6.72387	0.566155	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.24628	0.0345757	6.75265	0.575499	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.24566	-0.0123039	6.78134	0.573805	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.24585	0.00373208	6.80987	0.570681	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.24539	-0.00908605	6.83817	0.566019	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.24709	0.0339696	6.86756	0.587886	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.24524	-0.0370193	6.89655	0.579641	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.24467	-0.0114786	6.92523	0.573575	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.24084	-0.0765564	6.95451	0.585667	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.24019	-0.0128718	6.98325	0.574735	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.23779	-0.0481796	7.01172	0.569435	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.23439	-0.0679348	7.04149	0.595416	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.2329	-0.029839	7.0705	0.580217	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.22973	-0.0633883	7.0994	0.577984	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.22704	-0.053785	7.12878	0.587732	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.22036	-0.133533	7.1574	0.572277	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.21985	-0.0102082	7.18637	0.57936	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.21544	-0.0883186	7.21425	0.557751	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.213	-0.0486167	7.24215	0.557933	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.20894	-0.0813462	7.26996	0.55627	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.20574	-0.0638495	7.29933	0.587236	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.20185	-0.0778037	7.32733	0.560126	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.19767	-0.0837064	7.35477	0.548825	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.19311	-0.0911392	7.38368	0.57805	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.18893	-0.0837299	7.41201	0.566705	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.18375	-0.103537	7.43939	0.547492	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.17954	-0.0842635	7.46808	0.573808	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.17481	-0.0944437	7.49628	0.564082	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.17103	-0.0755851	7.52448	0.563958	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.16536	-0.113482	7.55143	0.53906	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.16106	-0.08598	7.57901	0.55167	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.15569	-0.107382	7.60718	0.563303	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.14956	-0.122548	7.63511	0.558693	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.14435	-0.104255	7.66246	0.546966	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.13816	-0.12374	7.6899	0.548819	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.13136	-0.136081	7.71758	0.553578	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.12653	-0.0966566	7.74548	0.55802	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.12013	-0.128007	7.77312	0.552651	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.11574	-0.0877257	7.80007	0.539037	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.10862	-0.142412	7.82631	0.524808	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.10373	-0.0977869	7.85389	0.551617	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.09617	-0.151139	7.88095	0.541121	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.09019	-0.11977	7.90883	0.557758	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.08312	-0.141282	7.93671	0.557599	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.07693	-0.12393	7.9644	0.553652	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.06911	-0.156367	7.99161	0.544334	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.06249	-0.132316	8.02056	0.57894	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.05514	-0.146936	8.0487	0.562849	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.04689	-0.165052	8.07628	0.551596	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.04075	-0.122839	8.10586	0.591624	
+#1 AntPos X	#2 AntVel X	#3 AntPos Y	#4 AntVel Y	
+3.03218	-0.171392	8.13376	0.557957	

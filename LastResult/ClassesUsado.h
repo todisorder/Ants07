@@ -172,11 +172,11 @@ public:
     string AntFilenamePos;
     string AntFilenamePosLast;
     string AntFilenameVel;
-    string AntFilenameFUCK;
+    string AntFilenamePhase;
     ofstream AntFilePos;
     ofstream AntFilePosLast;
     ofstream AntFileVel;
-    ofstream AntFileFUCK;
+    ofstream AntFilePhase;
     
     void Walk();
     

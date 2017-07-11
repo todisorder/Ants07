@@ -4,9 +4,9 @@
 # Method is: Deltas
 # delta t = 0.05
 # relaxation time tau (s) = 0.1
-# No. of Iterations = 1000
-# Final Time = 50
-# Comments:	
+# No. of Iterations = 500
+# Final Time = 25
+# Comments:	more random
 # X points (for phero visualization only) = 100
 # Y points (for phero visualization only) = 100
 # Radial discretization of sensing area = 5
@@ -15,7 +15,7 @@
 # Domain (Nondimensional)  = [-25,25] x [-25,25]
 # Domain (Cm)  = [-25,25] cm x [-25,25] cm
 ------------------------------------------------------
-Random is 1 times normal strength.
+Random is 10 times normal strength.
 ------------------------------------------------------
 Sensing Area Radius (cm)       	0.8
 Sensing Area Radius (X_hat)    	0.8
@@ -30,10 +30,10 @@ Max Number of active droplets/ant  1000
 Max Number of active droplets  	50000
 ------------------------------------------------------
 delta t (seconds) = 0.05
-Tfinal (t hat)    = 50
-Tfinal (seconds)  = 50
-Tfinal (minutos)  = 0.833333
-Tfinal (horas)    = 0.0138889
+Tfinal (t hat)    = 25
+Tfinal (seconds)  = 25
+Tfinal (minutos)  = 0.416667
+Tfinal (horas)    = 0.00694444
 ------------------------------------------------------
-Seed:  820756268
+Seed:  886140694
  
