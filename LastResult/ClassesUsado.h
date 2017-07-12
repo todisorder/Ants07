@@ -162,6 +162,7 @@ public:
     double AntVelX;
     double AntVelY;
     double AntTurningAngle;
+    double AntAngle;
     double AntPheroL;               // Only for deltas method.
     double AntPheroR;               // Only for deltas method.
     double AntHomeDirX;
@@ -350,7 +351,8 @@ void Ant::Walk(){
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
 
-    AntTurningAngle =  Angle(AntVelXNew,AntVelYNew) - Angle(AntVelXOld,AntVelYOld);         //Angle(AntVelXNew-AntVelX,AntVelYNew-AntVelY);
+    AntAngle = Angle(AntVelXNew,AntVelYNew);
+    AntTurningAngle =  AngleBetween(AntVelXNew,AntVelYNew,AntVelXOld,AntVelYOld);         //Angle(AntVelXNew-AntVelX,AntVelYNew-AntVelY);
     
     AntPosX = AntXposNew;
     AntPosY = AntYposNew;
@@ -428,14 +430,22 @@ double Ant::PheromoneConcentration(double X, double Y){
         //  ALL this will be computed for EACH point in the sector!
        
     for (int antnumber = 1; antnumber <= NumberOfActiveAnts; antnumber++){
-        	for (int droplet=1; droplet < min(DropletNumber,MaxActiveDropletsPerAnt); droplet++) {
-        	elapsed_time = current_time - DropletTimes(droplet,antnumber);
-        	aux += DropletIsActive(droplet,antnumber) * Heat(X-DropletCentersX(droplet,antnumber),Y-DropletCentersY(droplet,antnumber),elapsed_time,DropletAmount);
-        	// Do not read the last droplets, they are deltas.
-        	//cout << "El time" << elapsed_time << endl;
-     		}   
+        for (int droplet=1; droplet < min(DropletNumber,MaxActiveDropletsPerAnt); droplet++) {
+            elapsed_time = current_time - DropletTimes(droplet,antnumber);
+            aux += DropletIsActive(droplet,antnumber) * Heat(X-DropletCentersX(droplet,antnumber),Y-DropletCentersY(droplet,antnumber),elapsed_time,DropletAmount);
+            // Do not read the last droplets, they are deltas.
+        }
     }
-
+    //      NEW!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//    for (int antnumber = 1; antnumber <= NumberOfActiveAnts; antnumber++){
+//        for (int droplet=1; droplet < min(DropletNumber,MaxActiveDropletsPerAnt); droplet++) {
+//            elapsed_time = current_time - DropletTimes(droplet,antnumber);
+//            aux += DropletIsActive(droplet,antnumber) * Heat(X-DropletCentersX(droplet,antnumber),Y-DropletCentersY(droplet,antnumber),elapsed_time,DropletAmount);
+//            // Do not read the last droplets, they are deltas.
+//        }
+//    }
+    //      END NEW!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
 // cout << "current a.n.=" << CurrentAntNumber<< endl;
 //cout << "pher =" << aux << endl; 
 

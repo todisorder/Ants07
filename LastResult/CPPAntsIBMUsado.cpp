@@ -27,7 +27,7 @@ static string Method;
 static double const numxx = 100.;
 static double const numyy = 100.;
 
-static int const NumberOfAnts = 50;
+static int const NumberOfAnts = 30;
 
 static int const LARGE_NUMBER = 1000;    //10000000
 
@@ -40,10 +40,10 @@ static double const Pi =  3.1415926535;
 static double const Ln2 = 0.6931471806;
 
 // obtain a seed from the system clock:
-unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
+//unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
+unsigned seed1 = 522741302;                   // To use same seed as another simulation.
 
 default_random_engine generator(seed1);
-//default_random_engine generator(3800807093);      // To use same seed as another simulation.
 normal_distribution<double> Normal(0.,1.);          // Normal(0.,1.)
 normal_distribution<double> SmallNormal(0.,.05);      // (0.,.05)
 uniform_real_distribution<double> Uniform(0.,2.*Pi);      // Uniformly distributed angle
@@ -52,7 +52,7 @@ uniform_int_distribution<int> UniformInteger(0,20);      // Uniformly distribute
 // Normal(mean,stddev)
 // Usage:
 // double number = Normal(generator);
-static double const Turn_off_random = 3.*1.;    //*0.02;
+static double const Turn_off_random = 0.5*1.;    //*0.02;
 //  ^^^ 0. = No Random!
 
 //	Parameter for Regularizing Function
@@ -222,7 +222,9 @@ double IndexYOf(double position){
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 //      Theta de vetor  http://en.cppreference.com/w/cpp/numeric/math/atan2
-//      Cuidado que atan2 está entre -Pi/2 e Pi/2,
+//      "To compute the value, the function takes into account the sign
+//      of both arguments in order to determine the quadrant."
+//      Cuidado que atan2 está entre -Pi e Pi,
 //      mas acho que isso não tem influencia porque
 //      eu só calculo senos e cosenos do angulo,
 //      que dariam a mesma coisa se fosse em (0, 2Pi).
@@ -240,6 +242,23 @@ double Angle(double X, double Y)
 //      End Theta de vetor
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+//      Angle between 2 vectors (x1,y1) and (x2,y2)
+//      https://stackoverflow.com/questions/14066933/direct-way-of-computing-clockwise-angle-between-2-vectors
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+double AngleBetween(double x1, double y1, double x2, double y2)
+{
+    
+    double dot = x1*x2 + y1*y2;
+    double det = x1*y2 - y1*x2;
+    double aux =  atan2(det,dot);
+    return aux;
+    
+}
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 //      Regularizing Function
@@ -522,7 +541,7 @@ int main (void){
         
         Pop[antnumber].AntFilePos << "#1 AntPos X" << "\t" <<  "#2 AntPos Y" << "\t" <<  "#3 Distance form nest" << "\t" << endl;
         Pop[antnumber].AntFileVel << "#1 AntVel X" << "\t" <<  "#2 AntVel Y" << "\t" <<  "#3 Speed" << "\t" << "#4 Turning Angle Rad" << "\t" << "\t" << "#5 Turning Angle Deg" << "\t" << "#6 Detected Phero Left" << "\t"<< "#7 Detected Phero Right" << "\t" << endl;
-        Pop[antnumber].AntFilePhase << "#1 AntPos X" << "\t" << "#2 AntVel X" << "\t" <<  "#3 AntPos Y" << "\t" << "#4 AntVel Y" << "\t" << endl;
+        Pop[antnumber].AntFilePhase << "#1 AntPos X" << "\t" << "#2 AntVel X" << "\t" <<  "#3 AntPos Y" << "\t" << "#4 AntVel Y" << "\t" << "#5 AntAngle" << "\t" << endl;
         
 
         if (Pop[antnumber].AntFileVel.is_open())
@@ -577,11 +596,12 @@ int main (void){
 
             if (ChangedSide == 1) {
                 Pop[antnumber].AntFilePos << endl;
+                Pop[antnumber].AntFilePhase << endl;
                 ChangedSide = 0;
             }
             Pop[antnumber].AntFilePos << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << "\t" << sqrt(Pop[antnumber].AntPosX*Pop[antnumber].AntPosX + Pop[antnumber].AntPosY*Pop[antnumber].AntPosY) << endl;
             Pop[antnumber].AntFileVel << Pop[antnumber].AntVelX << "\t" << Pop[antnumber].AntVelY << "\t" << sqrt(Pop[antnumber].AntVelX*Pop[antnumber].AntVelX + Pop[antnumber].AntVelY*Pop[antnumber].AntVelY) << "\t" << Pop[antnumber].AntTurningAngle << "\t" << Pop[antnumber].AntTurningAngle*(180./Pi) << "\t" << Pop[antnumber].AntPheroL << "\t" << Pop[antnumber].AntPheroR << endl;
-            Pop[antnumber].AntFilePhase << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntVelX << "\t" <<  Pop[antnumber].AntPosY << "\t" << Pop[antnumber].AntVelY << "\t" << endl;
+            Pop[antnumber].AntFilePhase << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntVelX << "\t" <<  Pop[antnumber].AntPosY << "\t" << Pop[antnumber].AntVelY << "\t" << Pop[antnumber].AntAngle << "\t" << endl;
 
 
 //			SaveAnt(Pop[antnumber].AntPosX, Pop[antnumber].AntPosY, iter, to_string(antnumber));

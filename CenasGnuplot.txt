@@ -25,4 +25,5 @@ E: The last line
 F: The last data block
 
 plot for [i=1:10] "AntPos-".i.".txt" every ::3::4 tit "" w lp
+#http://gnuplot.sourceforge.net/docs_4.2/node121.html
 # isto dá só a linha de 3 a 4.
