@@ -575,7 +575,7 @@ double Ant::ForceX(){
         // FALTA a correção para ser periodico!!!!!!!!!!!!!
         
         aux = aux/auxX;
-        return aux;
+        return Lambda * aux;
     }
     
     if (Method == "Deltas") {
@@ -594,7 +594,7 @@ double Ant::ForceX(){
         // FALTA a correção para ser periodico!!!!!!!!!!!!!
         
         aux = aux/auxX;
-        return aux;
+        return Lambda * aux;
     }
     
     
@@ -658,7 +658,7 @@ double Ant::ForceY(){
         
         aux = aux/auxY;
         
-        return aux;
+        return Lambda * aux;
     }
     if (Method == "Deltas") {
         //        cout << "NL " << endl;
@@ -676,7 +676,7 @@ double Ant::ForceY(){
         
         aux = aux/auxY;
         
-        return aux;
+        return Lambda * aux;
     }
     
     if (Method == "LocalOnly") {

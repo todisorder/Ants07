@@ -24,14 +24,14 @@ using namespace std;
 
 static string Method;
 
-static double const numxx = 100.;
-static double const numyy = 100.;
+static double const numxx = 120.;
+static double const numyy = 120.;
 
-static int const NumberOfAnts = 30;
+static int const NumberOfAnts = 60;
 
 static int const LARGE_NUMBER = 1000;    //10000000
 
-static int const MaxActiveDropletsPerAnt = 1000;
+static int const MaxActiveDropletsPerAnt = 500;    // 1000
 
 static int const TestWithGivenTrail = 0;    // 1=true, 0=false
 
@@ -40,26 +40,23 @@ static double const Pi =  3.1415926535;
 static double const Ln2 = 0.6931471806;
 
 // obtain a seed from the system clock:
-//unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
-unsigned seed1 = 522741302;                   // To use same seed as another simulation.
+unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
+//unsigned seed1 = 522741302;                   // To use same seed as another simulation.
 
 default_random_engine generator(seed1);
 normal_distribution<double> Normal(0.,1.);          // Normal(0.,1.)
 normal_distribution<double> SmallNormal(0.,.05);      // (0.,.05)
 uniform_real_distribution<double> Uniform(0.,2.*Pi);      // Uniformly distributed angle
-uniform_int_distribution<int> UniformInteger(0,20);      // Uniformly distributed integer
+uniform_int_distribution<int> UniformInteger(0,10);      // Uniformly distributed integer   20
 //http://www.cplusplus.com/reference/random/normal_distribution/
 // Normal(mean,stddev)
 // Usage:
 // double number = Normal(generator);
-static double const Turn_off_random = 0.5*1.;    //*0.02;
+static double const Turn_off_random = 3.*1.;    //*0.02;
 //  ^^^ 0. = No Random!
 
 //	Parameter for Regularizing Function
 static double const RegularizingEpsilon = 0.01;
-
-//  This is pheromone detection threshold, but not exactly. It's complicated.
-static double const Threshold = 0.0001; //   Explained in the Readme...  0.00001
 
 
 //////////////////////////////////////////////////////
@@ -89,13 +86,11 @@ static double const SENSING_AREA_RADIUS = SensingAreaRadius / X_hat_in_cm;      
 //  Sensing Area Half Angle
 static double const SensingAreaHalfAngle = Pi/4.;         //
 
-//	With Weber's Law, Lambda may be ~ 1 ??
-static double const Lambda = 1.;         //10./SENSING_AREA_RADIUS;????
+//  Natural Ant velocity in cm/s
+static double const NaturalVelocityIncmsec = 2.;         //
 
-//////////////////////////////////////////////////////
-// End Ant parameters
-//////////////////////////////////////////////////////
-//////////////////////////////////////////////////////
+//  Natural Ant velocity in new units
+static double const NaturalVelocity = NaturalVelocityIncmsec * t_hat_in_seconds / X_hat_in_cm;         //
 
 // tempo final
 //static double const TFINAL = 0.1;
@@ -105,12 +100,26 @@ static double const delta_t = 0.05;   //     0.05
 static double const Diffusion = 0.002;      // .0002
 
 //  Pheromone Evaporation:
-static double const Evaporation = 0.01;        //0.005
+static double const Evaporation = 0.02;        //0.01
 
-//  How much pheromone each ant deposits... not sure if I want this,
-//  or the member vector in the Ant class.
-static double const DropletAmountPerUnitTime = 1.*.1*.01;        //0.00001
+//  Droplet amounts
+static double const DropletAmountPerUnitTime = 1.*1.*1.;        //0.00001
 static double const DropletAmount = DropletAmountPerUnitTime * delta_t;        //0.00001
+
+//  This is pheromone detection threshold
+static double const Threshold = 5.; //   0.00001
+
+//	With Deltas, Lambda =
+static double const Lambda = NaturalVelocity/(SENSING_AREA_RADIUS*cos(SensingAreaHalfAngle));         //
+//  With Nonlocal, L =
+//static double const Lambda = 1.;         //
+
+//////////////////////////////////////////////////////
+// End Ant parameters
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+
 
 string SensitivityMethod;
 
@@ -128,16 +137,16 @@ string SensitivityMethod;
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
 // extremo inferior do intervalo em x (cm)
-static double const x_1_cm = -25.;      //-5
+static double const x_1_cm = -100.;      //-25
 
 // extremo superior do intervalo em x (cm)
-static double const x_2_cm = 25.;       //5
+static double const x_2_cm = 100.;       //25
 
 // extremo inferior do intervalo em y (cm)
-static double const y_1_cm =  -25.;     //-5
+static double const y_1_cm =  -100.;     //-25
 
 // extremo superior do intervalo em y (cm)
-static double const y_2_cm = 25.;       //5
+static double const y_2_cm = 100.;       //25
 
 // extremo inferior do intervalo em x
 static double const x_1 = x_1_cm / X_hat_in_cm;
@@ -430,6 +439,8 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile << "Sensing Area Radius (cm)       	" << SensingAreaRadius << endl;
     tempfile << "Sensing Area Radius (X_hat)    	" << SENSING_AREA_RADIUS << endl;
     tempfile << "Sensing Half Angle             	Pi/" << Pi/SensingAreaHalfAngle << endl;
+    tempfile << "Natural Velocity (cm/sec)          " << NaturalVelocityIncmsec << endl;
+    tempfile << "Natural Velocity (X_hat/t_hat)     " << NaturalVelocity << endl;
     tempfile << "Lambda                         	" << Lambda << endl;
     tempfile << "Diffusion                      	" << Diffusion << endl;
     tempfile << "Evaporation                    	" << Evaporation << endl;

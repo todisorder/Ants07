@@ -27,3 +27,11 @@ F: The last data block
 plot for [i=1:10] "AntPos-".i.".txt" every ::3::4 tit "" w lp
 #http://gnuplot.sourceforge.net/docs_4.2/node121.html
 # isto dá só a linha de 3 a 4.
+
+
+#Esta cena….
+set samples 11
+set xrange [0:10]
+plot '+' using 1:1:(sprintf('%d', $1)) \
+    with labels offset 0,1 point pointtype 6 ps 2 lc rgb "blue" notitle
+https://stackoverflow.com/questions/25202251/change-the-color-of-the-points-in-gnuplot
