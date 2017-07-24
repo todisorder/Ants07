@@ -1,0 +1,43 @@
+#############################################################
+#############################################################
+#############################################################
+# Method is: Deltas
+# Border behavior is: restart
+# delta t = 0.05
+# relaxation time tau (s) = 0.1
+# No. of Iterations = 1000
+# Final Time = 50
+# Comments:	
+# X points (for phero visualization only) = 200
+# Y points (for phero visualization only) = 200
+# Radial discretization of sensing area = 5
+# Angle discretization of sensing area = 5
+# Domain Info:
+# Domain (Nondimensional)  = [-30,30] x [-30,30]
+# Domain (Cm)  = [-30,30] cm x [-30,30] cm
+------------------------------------------------------
+Random is 6 times normal strength.
+------------------------------------------------------
+Sensing Area Radius (cm)               0.8
+Sensing Area Radius (X_hat)            0.8
+Sensing Half Angle             	Pi/ 4
+Natural Velocity (cm/sec)              2
+Natural Velocity (X_hat/t_hat)         2
+Lambda                                 3.53553
+Diffusion                              0.002
+Evaporation                            0.01
+Droplet Amount                         0.05
+Droplet Amount p/ unit time            1
+Threshold                              4
+Max Number of active droplets/ant      1000
+Max Number of active droplets          100000
+Ignoring droplets farther than (X_hat) 15
+------------------------------------------------------
+delta t (seconds) = 0.05
+Tfinal (t hat)    = 50
+Tfinal (seconds)  = 50
+Tfinal (minutos)  = 0.833333
+Tfinal (horas)    = 0.0138889
+------------------------------------------------------
+Seed:  3399139798
+ 

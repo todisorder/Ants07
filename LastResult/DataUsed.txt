@@ -2,40 +2,42 @@
 #############################################################
 #############################################################
 # Method is: Deltas
+# Border behavior is: restart
 # delta t = 0.05
 # relaxation time tau (s) = 0.1
-# No. of Iterations = 500
-# Final Time = 25
-# Comments:	tresh 5
-# X points (for phero visualization only) = 120
-# Y points (for phero visualization only) = 120
+# No. of Iterations = 3000
+# Final Time = 150
+# Comments:	
+# X points (for phero visualization only) = 100
+# Y points (for phero visualization only) = 100
 # Radial discretization of sensing area = 5
 # Angle discretization of sensing area = 5
 # Domain Info:
-# Domain (Nondimensional)  = [-100,100] x [-100,100]
-# Domain (Cm)  = [-100,100] cm x [-100,100] cm
+# Domain (Nondimensional)  = [-30,30] x [-30,30]
+# Domain (Cm)  = [-30,30] cm x [-30,30] cm
 ------------------------------------------------------
-Random is 3 times normal strength.
+Random is 7 times normal strength.
 ------------------------------------------------------
-Sensing Area Radius (cm)       	0.8
-Sensing Area Radius (X_hat)    	0.8
-Sensing Half Angle             	Pi/4
-Natural Velocity (cm/sec)          2
-Natural Velocity (X_hat/t_hat)     2
-Lambda                         	3.53553
-Diffusion                      	0.002
-Evaporation                    	0.02
-Droplet Amount                 	0.05
-Droplet Amount p/ unit time        1
-Threshold                      	5
-Max Number of active droplets/ant  500
-Max Number of active droplets  	30000
+Sensing Area Radius (cm)               0.8
+Sensing Area Radius (X_hat)            0.8
+Sensing Half Angle             	Pi/ 4
+Natural Velocity (cm/sec)              2
+Natural Velocity (X_hat/t_hat)         2
+Lambda                                 3.53553
+Diffusion                              0.002
+Evaporation                            0.01
+Droplet Amount                         0.05
+Droplet Amount p/ unit time            1
+Threshold                              0.7
+Max Number of active droplets/ant      10000
+Max Number of active droplets          100000
+Ignoring droplets farther than (X_hat) 15
 ------------------------------------------------------
 delta t (seconds) = 0.05
-Tfinal (t hat)    = 25
-Tfinal (seconds)  = 25
-Tfinal (minutos)  = 0.416667
-Tfinal (horas)    = 0.00694444
+Tfinal (t hat)    = 150
+Tfinal (seconds)  = 150
+Tfinal (minutos)  = 2.5
+Tfinal (horas)    = 0.0416667
 ------------------------------------------------------
-Seed:  491087475
+Seed:  3611110519
  

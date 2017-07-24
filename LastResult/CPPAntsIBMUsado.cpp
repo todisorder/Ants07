@@ -24,14 +24,18 @@ using namespace std;
 
 static string Method;
 
-static double const numxx = 120.;
-static double const numyy = 120.;
+static string BorderBehavior = "restart";   //"periodic";         // "restart" or "periodic"
 
-static int const NumberOfAnts = 60;
+static double const numxx = 100.;
+static double const numyy = 100.;
 
-static int const LARGE_NUMBER = 1000;    //10000000
+static int const NumberOfAnts = 10;
 
-static int const MaxActiveDropletsPerAnt = 500;    // 1000
+static int const LARGE_NUMBER = 1000;    // NOT USED ANYMORE.
+
+static int const MaxActiveDropletsPerAnt = 10000;    // 1000
+
+static double const IgnoreDropletsFartherThan = 15.;
 
 static int const TestWithGivenTrail = 0;    // 1=true, 0=false
 
@@ -52,7 +56,7 @@ uniform_int_distribution<int> UniformInteger(0,10);      // Uniformly distribute
 // Normal(mean,stddev)
 // Usage:
 // double number = Normal(generator);
-static double const Turn_off_random = 3.*1.;    //*0.02;
+static double const Turn_off_random = 7.*1.;    //*0.02;
 //  ^^^ 0. = No Random!
 
 //	Parameter for Regularizing Function
@@ -100,14 +104,14 @@ static double const delta_t = 0.05;   //     0.05
 static double const Diffusion = 0.002;      // .0002
 
 //  Pheromone Evaporation:
-static double const Evaporation = 0.02;        //0.01
+static double const Evaporation = 0.01;        //0.01
 
 //  Droplet amounts
 static double const DropletAmountPerUnitTime = 1.*1.*1.;        //0.00001
 static double const DropletAmount = DropletAmountPerUnitTime * delta_t;        //0.00001
 
 //  This is pheromone detection threshold
-static double const Threshold = 5.; //   0.00001
+static double const Threshold = 0.7; //
 
 //	With Deltas, Lambda =
 static double const Lambda = NaturalVelocity/(SENSING_AREA_RADIUS*cos(SensingAreaHalfAngle));         //
@@ -137,16 +141,16 @@ string SensitivityMethod;
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
 // extremo inferior do intervalo em x (cm)
-static double const x_1_cm = -100.;      //-25
+static double const x_1_cm = -30.;      //-25
 
 // extremo superior do intervalo em x (cm)
-static double const x_2_cm = 100.;       //25
+static double const x_2_cm = 30.;       //25
 
 // extremo inferior do intervalo em y (cm)
-static double const y_1_cm =  -100.;     //-25
+static double const y_1_cm =  -30.;     //-25
 
 // extremo superior do intervalo em y (cm)
-static double const y_2_cm = 100.;       //25
+static double const y_2_cm = 30.;       //25
 
 // extremo inferior do intervalo em x
 static double const x_1 = x_1_cm / X_hat_in_cm;
@@ -421,6 +425,7 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile << "#############################################################"<<endl;
     tempfile << "#############################################################"<<endl;
     tempfile << "# Method is: "<< Method << endl;
+    tempfile << "# Border behavior is: "<< BorderBehavior << endl;
     tempfile << "# delta t = "<< delta_t<< endl;
     tempfile << "# relaxation time tau (s) = "<< tau << endl;
     tempfile << "# No. of Iterations = "<< data.numiter << endl;
@@ -436,19 +441,20 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile << "------------------------------------------------------" << endl;
     tempfile << "Random is " << Turn_off_random << " times normal strength." << endl;
     tempfile << "------------------------------------------------------" << endl;
-    tempfile << "Sensing Area Radius (cm)       	" << SensingAreaRadius << endl;
-    tempfile << "Sensing Area Radius (X_hat)    	" << SENSING_AREA_RADIUS << endl;
-    tempfile << "Sensing Half Angle             	Pi/" << Pi/SensingAreaHalfAngle << endl;
-    tempfile << "Natural Velocity (cm/sec)          " << NaturalVelocityIncmsec << endl;
-    tempfile << "Natural Velocity (X_hat/t_hat)     " << NaturalVelocity << endl;
-    tempfile << "Lambda                         	" << Lambda << endl;
-    tempfile << "Diffusion                      	" << Diffusion << endl;
-    tempfile << "Evaporation                    	" << Evaporation << endl;
-    tempfile << "Droplet Amount                 	" << DropletAmount << endl;
-    tempfile << "Droplet Amount p/ unit time        " << DropletAmountPerUnitTime << endl;
-    tempfile << "Threshold                      	" << Threshold << endl;
-    tempfile << "Max Number of active droplets/ant  " << MaxActiveDropletsPerAnt << endl;
-    tempfile << "Max Number of active droplets  	" << MaxActiveDropletsPerAnt*NumberOfAnts << endl;
+    tempfile << "Sensing Area Radius (cm)               " << SensingAreaRadius << endl;
+    tempfile << "Sensing Area Radius (X_hat)            " << SENSING_AREA_RADIUS << endl;
+    tempfile << "Sensing Half Angle             	Pi/ " << Pi/SensingAreaHalfAngle << endl;
+    tempfile << "Natural Velocity (cm/sec)              " << NaturalVelocityIncmsec << endl;
+    tempfile << "Natural Velocity (X_hat/t_hat)         " << NaturalVelocity << endl;
+    tempfile << "Lambda                                 " << Lambda << endl;
+    tempfile << "Diffusion                              " << Diffusion << endl;
+    tempfile << "Evaporation                            " << Evaporation << endl;
+    tempfile << "Droplet Amount                         " << DropletAmount << endl;
+    tempfile << "Droplet Amount p/ unit time            " << DropletAmountPerUnitTime << endl;
+    tempfile << "Threshold                              " << Threshold << endl;
+    tempfile << "Max Number of active droplets/ant      " << MaxActiveDropletsPerAnt << endl;
+    tempfile << "Max Number of active droplets          " << MaxActiveDropletsPerAnt*NumberOfAnts << endl;
+    tempfile << "Ignoring droplets farther than (X_hat) " << IgnoreDropletsFartherThan << endl;
     tempfile << "------------------------------------------------------" << endl;
     tempfile << "delta t (seconds) = " << delta_t * t_hat_in_seconds << endl;
     tempfile << "Tfinal (t hat)    = " << tt*delta_t<< endl;
@@ -520,6 +526,7 @@ int main (void){
     Pop = new Ant[NN];
     
 
+
     for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
         
         //  Random initial velocities
@@ -528,17 +535,12 @@ int main (void){
         
         Pop[antnumber].AntFilenamePos = "AntPos-"+to_string(antnumber+1)+".txt";
         Pop[antnumber].AntFilePos.open(Pop[antnumber].AntFilenamePos,ofstream::app);
-//        cout << Pop[antnumber].AntFilenamePos << endl;
-//    }
-    
-//    for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
-
+ 
+        
 //        Pop[antnumber].AntFilenamePosLast = "AntPosLast-"+to_string(antnumber+1)+".txt";
 //        Pop[antnumber].AntFilePosLast.open(Pop[antnumber].AntFilenamePosLast,fstream::app);
 //        cout << Pop[antnumber].AntFilenamePosLast << endl;
-//    }
-    
-//    for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
+
 
         Pop[antnumber].AntFilenameVel = "AntVel-"+to_string(antnumber+1)+".txt";
         Pop[antnumber].AntFileVel.open(Pop[antnumber].AntFilenameVel,ofstream::app);
@@ -546,8 +548,14 @@ int main (void){
         Pop[antnumber].AntFilenamePhase = "AntPhase-"+to_string(antnumber+1)+".txt";
         Pop[antnumber].AntFilePhase.open(Pop[antnumber].AntFilenamePhase,ofstream::app);
         
-        
-//        cout << Pop[antnumber].AntFilenameVel << endl;
+        if (Pop[antnumber].AntFileVel.is_open())
+        {
+            //            std::cout << "Output operation " << antnumber << " successfully performed\n";
+        }
+        else
+        {
+            std::cout << "Error opening file "<< antnumber << "\n";
+        }
         
         
         Pop[antnumber].AntFilePos << "#1 AntPos X" << "\t" <<  "#2 AntPos Y" << "\t" <<  "#3 Distance form nest" << "\t" << endl;
@@ -555,25 +563,15 @@ int main (void){
         Pop[antnumber].AntFilePhase << "#1 AntPos X" << "\t" << "#2 AntVel X" << "\t" <<  "#3 AntPos Y" << "\t" << "#4 AntVel Y" << "\t" << "#5 AntAngle" << "\t" << endl;
         
 
-        if (Pop[antnumber].AntFileVel.is_open())
-        {
-//            ofs << "lorem ipsum";
-            std::cout << "Output operation " << antnumber << " successfully performed\n";
-  //          ofs.close();
-        }
-        else
-        {
-            std::cout << "Error opening file "<< antnumber << "\n";
-        }
     }
     /******
      This is the most stupid shit ever... if I have more than 2 file opening loops above, 
      then the third loop fails after a certain number of opened files, only on Mac!!!!!!
-     Whyyy?
+     Whyyy? BECAUSE OF ulimit -n    !!!! Solved.
     ******/
     
     
-    
+    ofstream Everybody("Everybody.txt");
     
     ofstream AntPos("AntPos.txt");
     AntPos << "###  Units are X_hat = " << X_hat_in_cm << "cm." << endl;
@@ -606,48 +604,45 @@ int main (void){
             }
 
             if (ChangedSide == 1) {
-                Pop[antnumber].AntFilePos << endl;
-                Pop[antnumber].AntFilePhase << endl;
+//                Uncomment here to make gnuplot datablocks:
+//                Pop[antnumber].AntFilePos << endl;
+//                Pop[antnumber].AntFilePhase << endl;
                 ChangedSide = 0;
             }
             Pop[antnumber].AntFilePos << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << "\t" << sqrt(Pop[antnumber].AntPosX*Pop[antnumber].AntPosX + Pop[antnumber].AntPosY*Pop[antnumber].AntPosY) << endl;
             Pop[antnumber].AntFileVel << Pop[antnumber].AntVelX << "\t" << Pop[antnumber].AntVelY << "\t" << sqrt(Pop[antnumber].AntVelX*Pop[antnumber].AntVelX + Pop[antnumber].AntVelY*Pop[antnumber].AntVelY) << "\t" << Pop[antnumber].AntTurningAngle << "\t" << Pop[antnumber].AntTurningAngle*(180./Pi) << "\t" << Pop[antnumber].AntPheroL << "\t" << Pop[antnumber].AntPheroR << endl;
             Pop[antnumber].AntFilePhase << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntVelX << "\t" <<  Pop[antnumber].AntPosY << "\t" << Pop[antnumber].AntVelY << "\t" << Pop[antnumber].AntAngle << "\t" << endl;
 
+            Everybody << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << "\t" << endl;
 
 //			SaveAnt(Pop[antnumber].AntPosX, Pop[antnumber].AntPosY, iter, to_string(antnumber));
-			   
-			
-			
-			           
+            
         }
         
         //  Decide to activate another ant or not
         
         randomnumber = UniformInteger(generator);
-        cout << "Rand: " <<randomnumber << endl;
+//        cout << "Rand: " <<randomnumber << endl;
         if (randomnumber == 1 && ActiveAnts < totalantnumber) {
             Pop[ActiveAnts].AntIsActive = true;
             ActiveAnts++;
-            cout << "Activated ant number " << ActiveAnts << endl;
+            cout << "Activated ant number " << ActiveAnts << " on iteration "<< iter << endl;
             Ant::NumberOfActiveAnts = ActiveAnts;
         }
         
         
-        
-        
-        //Ant::DropletNumber += Ant::DropletNumberToAdd;
         Ant::DropletNumber++;
         
 
         AntPos << Pop[0].AntPosX << "\t" << Pop[0].AntPosY << endl;
         
-        cout << "Iter: " <<iter << endl;
-        cout << "DropletNumber: " << Ant::DropletNumber-1 << endl;
-       // cout << "InactiveDropletsCount: " << Ant::InactiveDropletsCount() << endl;
+        cout << " Iter: " <<iter <<" / " << numiter << "\r"<< flush;//endl;
+        
+        Everybody << endl;
         
     }// End of time cycle
     
+
     
     // Write last position to a file.
     for (int antnumber=0; antnumber < totalantnumber; antnumber++){
@@ -661,7 +656,7 @@ int main (void){
     cout << "Building Pheromone... " << endl;
     Ant::BuildPheromone();
 
-///************   Deprecated:
+///************
     ofstream Phero;
     Phero.open("Phero.txt");
     for(int j=1;j<=numxx;j++){

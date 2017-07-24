@@ -1,8 +1,8 @@
 reset
 set term x11 1
 
-fst = 1
-ants = 40
+fst = 20
+ants = 30
 
 
 plot for [i=fst:ants] "AntVel-".i.".txt"  using (($6)-($7)):(atan((($6)-($7))/(($6)+($7)) * tan(3.14159/4.))) w p pt 2 ps 1 lc rgb "red" notitle,\

@@ -174,10 +174,12 @@ public:
     string AntFilenamePosLast;
     string AntFilenameVel;
     string AntFilenamePhase;
+
     ofstream AntFilePos;
     ofstream AntFilePosLast;
     ofstream AntFileVel;
     ofstream AntFilePhase;
+
     
     void Walk();
     
@@ -317,30 +319,57 @@ void Ant::Walk(){
     ////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////
-    // PERIODIC Boundary
+    // Boundary
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
     
-    if (AntXposNew <= x_1) {
-        AntXposNew = AntXposNew + (x_2 - x_1);
-        ChangedSide = 1;
+    if (BorderBehavior == "periodic") {
+        
+        if (AntXposNew <= x_1) {
+            AntXposNew = AntXposNew + (x_2 - x_1);
+            ChangedSide = 1;
+        }
+        if (AntXposNew >= x_2) {
+            AntXposNew = AntXposNew - (x_2 - x_1);
+            ChangedSide = 1;
+        }
+        if (AntYposNew <= y_1) {
+            AntYposNew = AntYposNew + (y_2 - y_1);
+            ChangedSide = 1;
+        }
+        if (AntYposNew >= y_2) {
+            AntYposNew = AntYposNew - (y_2 - y_1);
+            ChangedSide = 1;
+        }
     }
-    if (AntXposNew >= x_2) {
-        AntXposNew = AntXposNew - (x_2 - x_1);
-        ChangedSide = 1;
+
+    if (BorderBehavior == "restart") {
+        
+        if (AntXposNew <= x_1) {
+            AntXposNew = 0.;
+            AntYposNew = 0.;
+            ChangedSide = 1;
+        }
+        if (AntXposNew >= x_2) {
+            AntXposNew = 0.;
+            AntYposNew = 0.;
+            ChangedSide = 1;
+        }
+        if (AntYposNew <= y_1) {
+            AntXposNew = 0.;
+            AntYposNew = 0.;
+            ChangedSide = 1;
+        }
+        if (AntYposNew >= y_2) {
+            AntXposNew = 0.;
+            AntYposNew = 0.;
+            ChangedSide = 1;
+        }
     }
-    if (AntYposNew <= y_1) {
-        AntYposNew = AntYposNew + (y_2 - y_1);
-        ChangedSide = 1;
-    }
-    if (AntYposNew >= y_2) {
-        AntYposNew = AntYposNew - (y_2 - y_1);
-        ChangedSide = 1;
-    }
-    
+
     ////////////////////////////////////////////////////////
-    // End PERIODIC Boundary
+    // End Boundary
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
@@ -419,6 +448,7 @@ double Ant::PheromoneConcentration(double X, double Y){
     double elapsed_time = 0.;
     double aux = 0.;
     double aux1 = 0.;
+    double distancetodroplet = 0.;
     int Max = MaxActiveDropletsPerAnt;
     int index = 0;
     
@@ -431,8 +461,12 @@ double Ant::PheromoneConcentration(double X, double Y){
        
     for (int antnumber = 1; antnumber <= NumberOfActiveAnts; antnumber++){
         for (int droplet=1; droplet < min(DropletNumber,MaxActiveDropletsPerAnt); droplet++) {
-            elapsed_time = current_time - DropletTimes(droplet,antnumber);
-            aux += DropletIsActive(droplet,antnumber) * Heat(X-DropletCentersX(droplet,antnumber),Y-DropletCentersY(droplet,antnumber),elapsed_time,DropletAmount);
+            
+            distancetodroplet = sqrt((X - DropletCentersX(droplet,antnumber))*(X - DropletCentersX(droplet,antnumber)) + (Y - DropletCentersY(droplet,antnumber))*(Y - DropletCentersY(droplet,antnumber)));
+            if (distancetodroplet <= IgnoreDropletsFartherThan) {
+                elapsed_time = current_time - DropletTimes(droplet,antnumber);
+                aux += DropletIsActive(droplet,antnumber) * Heat(X-DropletCentersX(droplet,antnumber),Y-DropletCentersY(droplet,antnumber),elapsed_time,DropletAmount);
+            }
             // Do not read the last droplets, they are deltas.
         }
     }

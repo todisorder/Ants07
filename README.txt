@@ -3,6 +3,10 @@ Ants07
 https://github.com/todisorder/Ants07.git
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+>> Jul 2017.
+Muitas coisas, não tenho atualizado o readme.
+Funciona bem.
+
 >> 4 Abril 2017
 
 Com muitas não dá. Vou tentar outras maneiras de
