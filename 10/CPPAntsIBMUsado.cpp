@@ -24,7 +24,7 @@ using namespace std;
 
 static string Method;
 
-static string BorderBehavior = "restart";   //"periodic";         // "restart" or "periodic"
+static string BorderBehavior = "periodic";   //"periodic";         // "respawn" or "periodic"
 
 static double const numxx = 100.;
 static double const numyy = 100.;
@@ -37,7 +37,7 @@ static int const MaxActiveDropletsPerAnt = 10000;    // 1000
 
 static double const IgnoreDropletsFartherThan = 15.;
 
-static int const TestWithGivenTrail = 0;    // 1=true, 0=false
+static int const TestWithGivenTrail = 1;    // 1=true, 0=false
 
 //static double const Pi = 3.14159;
 static double const Pi =  3.1415926535;
@@ -107,7 +107,7 @@ static double const Diffusion = 0.002;      // .0002
 static double const Evaporation = 0.01;        //0.01
 
 //  Droplet amounts
-static double const DropletAmountPerUnitTime = 1.*1.*1.;        //0.00001
+static double const DropletAmountPerUnitTime = 0.*1.*1.;        //0.00001
 static double const DropletAmount = DropletAmountPerUnitTime * delta_t;        //0.00001
 
 //  This is pheromone detection threshold
@@ -174,8 +174,8 @@ static double const delta_y = (y_2-y_1)/numyy;;
 ////////////////////////////
 // Parametro temporário para a pheromone
 ////////////////////////////
-static double const PheroNarrow = 5.;
-static double const PheroHigh = .02;
+static double const PheroNarrow = 2.;
+static double const PheroHigh = 2.;
 ////////////////////////////
 // End Parametro temporário para a pheromone
 ////////////////////////////
@@ -519,7 +519,8 @@ int main (void){
     int NN = NumberOfAnts;
     int totalantnumber = NN;
     
-    int ActiveAnts = 1;
+    //  Active ants at the start
+    int ActiveAnts = NN;         // 1
     Ant::NumberOfActiveAnts = ActiveAnts;
     
     Ant * Pop;
@@ -558,7 +559,7 @@ int main (void){
         }
         
         
-        Pop[antnumber].AntFilePos << "#1 AntPos X" << "\t" <<  "#2 AntPos Y" << "\t" <<  "#3 Distance form nest" << "\t" << endl;
+        Pop[antnumber].AntFilePos << "#1 AntPos X" << "\t" <<  "#2 AntPos Y" << "\t" <<  "#3 Distance form nest" << "\t" << "#4 Total Distance" << "\t" << "#5 Total Y Distance" << endl;
         Pop[antnumber].AntFileVel << "#1 AntVel X" << "\t" <<  "#2 AntVel Y" << "\t" <<  "#3 Speed" << "\t" << "#4 Turning Angle Rad" << "\t" << "\t" << "#5 Turning Angle Deg" << "\t" << "#6 Detected Phero Left" << "\t"<< "#7 Detected Phero Right" << "\t" << endl;
         Pop[antnumber].AntFilePhase << "#1 AntPos X" << "\t" << "#2 AntVel X" << "\t" <<  "#3 AntPos Y" << "\t" << "#4 AntVel Y" << "\t" << "#5 AntAngle" << "\t" << endl;
         
@@ -572,6 +573,7 @@ int main (void){
     
     
     ofstream Everybody("Everybody.txt");
+    ofstream Distances("Distances.txt");
     
     ofstream AntPos("AntPos.txt");
     AntPos << "###  Units are X_hat = " << X_hat_in_cm << "cm." << endl;
@@ -586,6 +588,10 @@ int main (void){
 
     //  Activate one ant
     Pop[0].AntIsActive = true;
+    //  Activate all ants that should be active at the start
+    for (int antnumber=0; antnumber < ActiveAnts; antnumber++) {
+        Pop[antnumber].AntIsActive = true;
+    }
     
     //	Start of time cycle
     for (int iter=1; iter <= numiter; iter++) {
@@ -600,7 +606,8 @@ int main (void){
             Ant::CurrentAntNumber = antnumber+1;
                 
             if (Pop[antnumber].AntIsActive) {
-                Pop[antnumber].Walk(); //cout << "Fodeuiter"<< iter<< endl;  
+                
+                Pop[antnumber].Walk();
             }
 
             if (ChangedSide == 1) {
@@ -609,20 +616,27 @@ int main (void){
 //                Pop[antnumber].AntFilePhase << endl;
                 ChangedSide = 0;
             }
-            Pop[antnumber].AntFilePos << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << "\t" << sqrt(Pop[antnumber].AntPosX*Pop[antnumber].AntPosX + Pop[antnumber].AntPosY*Pop[antnumber].AntPosY) << endl;
+            
+            
+            Pop[antnumber].AntFilePos << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << "\t" << sqrt(Pop[antnumber].AntPosX*Pop[antnumber].AntPosX + Pop[antnumber].AntPosY*Pop[antnumber].AntPosY) << "\t" << Pop[antnumber].AntDistance << "\t" << Pop[antnumber].AntDistanceY << endl;
+            
             Pop[antnumber].AntFileVel << Pop[antnumber].AntVelX << "\t" << Pop[antnumber].AntVelY << "\t" << sqrt(Pop[antnumber].AntVelX*Pop[antnumber].AntVelX + Pop[antnumber].AntVelY*Pop[antnumber].AntVelY) << "\t" << Pop[antnumber].AntTurningAngle << "\t" << Pop[antnumber].AntTurningAngle*(180./Pi) << "\t" << Pop[antnumber].AntPheroL << "\t" << Pop[antnumber].AntPheroR << endl;
+            
             Pop[antnumber].AntFilePhase << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntVelX << "\t" <<  Pop[antnumber].AntPosY << "\t" << Pop[antnumber].AntVelY << "\t" << Pop[antnumber].AntAngle << "\t" << endl;
 
             Everybody << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << "\t" << endl;
 
+            
+            
 //			SaveAnt(Pop[antnumber].AntPosX, Pop[antnumber].AntPosY, iter, to_string(antnumber));
             
         }
         
         //  Decide to activate another ant or not
         
-        randomnumber = UniformInteger(generator);
-//        cout << "Rand: " <<randomnumber << endl;
+//        randomnumber = UniformInteger(generator); // <--- uncomment for random spawning
+        randomnumber = 1;   //  <----- All ants active after a few iterations
+
         if (randomnumber == 1 && ActiveAnts < totalantnumber) {
             Pop[ActiveAnts].AntIsActive = true;
             ActiveAnts++;
@@ -643,10 +657,13 @@ int main (void){
     }// End of time cycle
     
 
+
     
     // Write last position to a file.
     for (int antnumber=0; antnumber < totalantnumber; antnumber++){
         Pop[antnumber].AntFilePosLast << Pop[antnumber].AntPosX << "\t" << Pop[antnumber].AntPosY << endl;
+        Distances <<"# Ant nr. " << antnumber+1 << " total distance."<<"\t"<<"# Ant nr. " << antnumber+1 << " total Y distance." <<endl;
+        Distances << Pop[antnumber].AntDistance << "\t" << Pop[antnumber].AntDistanceY << endl;
     }
     
     PrintInfo(delta_t,data.Comm, data);
@@ -669,6 +686,10 @@ int main (void){
     Phero.close();
 //*/
 
+    
+
+
+    
     
     
     return 0;

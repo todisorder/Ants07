@@ -9,7 +9,7 @@ set yrange [-16:16]
 
 
 do for [iter=1:1000:10] {
-	do for [ant=0:50] {
+	do for [ant=0:2] {
 #    outfile = sprintf('PositionAnt%03.0f-iter%03.0f.png',ant,iter)
 #    set output outfile
 #    plot "AntPos-".(ant+1).".txt" every ::iter-30::iter w l

@@ -163,6 +163,9 @@ public:
     double AntVelY;
     double AntTurningAngle;
     double AntAngle;
+    double AntDistanceX;
+    double AntDistanceY;
+    double AntDistance;
     double AntPheroL;               // Only for deltas method.
     double AntPheroR;               // Only for deltas method.
     double AntHomeDirX;
@@ -344,7 +347,7 @@ void Ant::Walk(){
         }
     }
 
-    if (BorderBehavior == "restart") {
+    if (BorderBehavior == "respawn") {
         
         if (AntXposNew <= x_1) {
             AntXposNew = 0.;
@@ -388,7 +391,9 @@ void Ant::Walk(){
     AntVelX = AntVelXNew;
     AntVelY = AntVelYNew;
     
-
+    AntDistanceX = AntDistanceX + delta_t * AntVelX;
+    AntDistanceY = AntDistanceY + delta_t * AntVelY;
+    AntDistance = sqrt(AntDistanceX*AntDistanceX + AntDistanceY*AntDistanceY);
     
 
     DropletNumberToAdd ++    ;
