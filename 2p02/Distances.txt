@@ -1,2 +1,2 @@
 # Ant nr. 1 total distance.	# Ant nr. 1 total Y distance.
-29.8912	0.474359
+30.5089	30.5089

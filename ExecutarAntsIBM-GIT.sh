@@ -11,6 +11,7 @@ cp antsibm"$Version"  "$Folder"
 cp AntsIBM"$Version".cpp  "$Folder"/CPPAntsIBMUsado.cpp
 cp Classes.h  "$Folder"/ClassesUsado.h
 cp plot-png.sh  "$Folder"
+cp PlotAntOnTrail.sh  "$Folder"
 #cp plots-Mass.plt  "$Folder"
 cd "$Folder"
 

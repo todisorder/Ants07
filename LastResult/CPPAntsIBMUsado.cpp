@@ -11,16 +11,16 @@
 using namespace std;
 
 // ASCII art from http://www.kammerl.de/ascii/AsciiSignature.php
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// _______       ___   .___________.    ___
-//|       \     /   \  |           |   /   \
-//|  .--.  |   /  ^  \ `---|  |----`  /  ^  \
-//|  |  |  |  /  /_\  \    |  |      /  /_\  \
-//|  '--'  | /  _____  \   |  |     /  _____  \
-//|_______/ /__/     \__\  |__|    /__/     \__\
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+// _______       ___   .___________.    ___         //
+//|       \     /   \  |           |   /   \        //
+//|  .--.  |   /  ^  \ `---|  |----`  /  ^  \       //
+//|  |  |  |  /  /_\  \    |  |      /  /_\  \      //
+//|  '--'  | /  _____  \   |  |     /  _____  \     //
+//|_______/ /__/     \__\  |__|    /__/     \__\    //
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
 
 static string Method;
 
@@ -29,7 +29,7 @@ static string BorderBehavior = "periodic";   //"periodic";         // "respawn" 
 static double const numxx = 100.;
 static double const numyy = 100.;
 
-static int const NumberOfAnts = 20;
+static int const NumberOfAnts = 1;
 
 static int const LARGE_NUMBER = 1000;    // NOT USED ANYMORE.
 
@@ -39,13 +39,25 @@ static double const IgnoreDropletsFartherThan = 15.;
 
 static int const TestWithGivenTrail = 1;    // 1=true, 0=false
 
+static string GivenTrailType;
+
+///////////////////////////////////////////
+// Parameters for given pheromone trail  //
+///////////////////////////////////////////
+static double const PheroNarrow = .8*1.;
+static double const PheroHigh = 5.;
+///////////////////////////////////////////
+// End Parameters for given pheromone trail
+///////////////////////////////////////////
+
+
 //static double const Pi = 3.14159;
 static double const Pi =  3.1415926535;
 static double const Ln2 = 0.6931471806;
 
 // obtain a seed from the system clock:
 //unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
-unsigned seed1 = 522741301;                   // To use same seed as another simulation.
+unsigned seed1 = 3536131122;                   // To use same seed as another simulation.
 
 default_random_engine generator(seed1);
 normal_distribution<double> Normal(0.,1.);          // Normal(0.,1.)
@@ -56,7 +68,7 @@ uniform_int_distribution<int> UniformInteger(0,10);      // Uniformly distribute
 // Normal(mean,stddev)
 // Usage:
 // double number = Normal(generator);
-static double const Turn_off_random = 7.*1.;    //*0.02;
+static double const Turn_off_random = 7.*0.;    //*0.02;
 //  ^^^ 0. = No Random!
 
 //	Parameter for Regularizing Function
@@ -64,9 +76,9 @@ static double const RegularizingEpsilon = 0.01;
 
 
 //////////////////////////////////////////////////////
-// Ant parameters
+// Ant parameters                                   //
 //////////////////////////////////////////////////////
-//////////////////////////////////////////////////////
+
 //  Time scale t_hat em segundos
 static double const t_hat_in_seconds = 1.;
 
@@ -74,7 +86,7 @@ static double const t_hat_in_seconds = 1.;
 static double const X_hat_in_cm = 1.;                  // 1.73;
 
 //  Relaxation time tau em segundos:
-static double const tau = .1;         //    0.5
+static double const tau = .5;         //    0.5
 
 //  Nondimensional relaxation TAU = (t_hat / tau)^(-1).
 //  Deve ser o relaxation time nas unidades t_hat.
@@ -87,11 +99,16 @@ static double const SensingAreaRadius = .8;         //  .4
 //  Sensing area radius em X_hat
 static double const SENSING_AREA_RADIUS = SensingAreaRadius / X_hat_in_cm;         //
 
-//  Sensing Area Half Angle
-static double const SensingAreaHalfAngle = Pi/7.;         //
+//////////////////////////////////////
+//  Sensing Area Half Angle         //
+//  .-. . . .-. .   .-.             //
+//  |-| |\| |.. |   |-              //
+//  ` ' ' ` `-' `-' `-'             //
+//////////////////////////////////////
+static double const SensingAreaHalfAngle = 1.*Pi/1.9;         //
 
 //  Natural Ant velocity in cm/s
-static double const NaturalVelocityIncmsec = 2.;         //
+static double const NaturalVelocityIncmsec = 2.;         // 2.
 
 //  Natural Ant velocity in new units
 static double const NaturalVelocity = NaturalVelocityIncmsec * t_hat_in_seconds / X_hat_in_cm;         //
@@ -114,13 +131,14 @@ static double const DropletAmount = DropletAmountPerUnitTime * delta_t;        /
 static double const Threshold = 0.7; //
 
 //	With Deltas, Lambda =
-static double const Lambda = NaturalVelocity/(SENSING_AREA_RADIUS*cos(SensingAreaHalfAngle));         //
+static double const LambdaDeltas = NaturalVelocity/(SENSING_AREA_RADIUS*cos(SensingAreaHalfAngle));         //
 //  With Nonlocal, L =
-//static double const Lambda = 1.;         //
+static double const LambdaNonlocal = (3./2.)*NaturalVelocity*SensingAreaHalfAngle/(SENSING_AREA_RADIUS*sin(SensingAreaHalfAngle));         //
+//  Deprecated, for linear method
+static double const Lambda = 1.;
 
 //////////////////////////////////////////////////////
-// End Ant parameters
-//////////////////////////////////////////////////////
+// End Ant parameters                               //
 //////////////////////////////////////////////////////
 
 
@@ -130,16 +148,16 @@ string SensitivityMethod;
 ////////////////////////////
 //  Definição do  Domínio
 ////////////////////////////
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////
-// _______   ______   .___  ___.      ___       __  .__   __.
-//|       \ /  __  \  |   \/   |     /   \     |  | |  \ |  |
-//|  .--.  |  |  |  | |  \  /  |    /  ^  \    |  | |   \|  |
-//|  |  |  |  |  |  | |  |\/|  |   /  /_\  \   |  | |  . `  |
-//|  '--'  |  `--'  | |  |  |  |  /  _____  \  |  | |  |\   |
-//|_______/ \______/  |__|  |__| /__/     \__\ |__| |__| \__|
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+// _______   ______   .___  ___.      ___       __  .__   __.  //
+//|       \ /  __  \  |   \/   |     /   \     |  | |  \ |  |  //
+//|  .--.  |  |  |  | |  \  /  |    /  ^  \    |  | |   \|  |  //
+//|  |  |  |  |  |  | |  |\/|  |   /  /_\  \   |  | |  . `  |  //
+//|  '--'  |  `--'  | |  |  |  |  /  _____  \  |  | |  |\   |  //
+//|_______/ \______/  |__|  |__| /__/     \__\ |__| |__| \__|  //
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // extremo inferior do intervalo em x (cm)
 static double const x_1_cm = -30.;      //-25
 
@@ -171,33 +189,25 @@ static double const y_2 = y_2_cm / X_hat_in_cm;
 static double const delta_x = (x_2-x_1)/numxx;;
 static double const delta_y = (y_2-y_1)/numyy;;
 
-////////////////////////////
-// Parametro temporário para a pheromone
-////////////////////////////
-static double const PheroNarrow = 2.;
-static double const PheroHigh = 2.;
-////////////////////////////
-// End Parametro temporário para a pheromone
-////////////////////////////
 
-////////////////////////////
-// Nonlocal Sector Discretization parameters
-////////////////////////////
+//////////////////////////////////////////////////////////
+// Nonlocal Sector Discretization parameters            //
+//////////////////////////////////////////////////////////
 static int const RNumber = 5;
 static int const ThetaNumber = 5;
-static double const DRSector = SENSING_AREA_RADIUS / RNumber;
-static double const DThetaSector = 2.* SensingAreaHalfAngle / ThetaNumber;
-////////////////////////////
-// End Nonlocal Sector Discretization parameters
-////////////////////////////
+static double const DRSector = SENSING_AREA_RADIUS / (RNumber);
+static double const DThetaSector = 2.* SensingAreaHalfAngle / (ThetaNumber);
+//////////////////////////////////////////////////////////
+// End Nonlocal Sector Discretization parameters        //
+//////////////////////////////////////////////////////////
 
 
 
-////////////////////////////
+///////////////////////////////////////////////
 //  Parametro Só para os plots não ficarem
 //  com um risco do lado ao outro
 //  quando muda de lado por periodicidade
-////////////////////////////
+///////////////////////////////////////////////
 static int ChangedSide = 0;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -232,6 +242,20 @@ double IndexYOf(double position){
     return jofYpos;
 }
 
+double GivenTrail(double XX){
+    
+    GivenTrailType = "exponential";
+    double aux;
+    aux = 1.*PheroHigh*exp(-PheroNarrow*abs(XX));
+//    if (abs(XX) < PheroNarrow) {
+//        aux = PheroHigh;
+//        GivenTrailType = "constant on a narrow band";
+//    }
+    
+    
+    return aux;
+    
+}
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 //      Theta de vetor  http://en.cppreference.com/w/cpp/numeric/math/atan2
@@ -419,6 +443,16 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile.open("DataUsed.txt");
     string tempinfo;
     
+    string giventrail = "No trail given.";
+    stringstream wtfisthis;
+    wtfisthis.clear();
+
+    if (TestWithGivenTrail==1) {
+        wtfisthis << "ATTENTION! Testing with given " << GivenTrailType << " trail. PheroNarrow is "  << PheroNarrow  << ", PheroHigh is "<< PheroHigh  << ".";
+        giventrail.clear();
+        giventrail = wtfisthis.str();
+    }
+    
     double tt = data.numiter ;
     
     tempfile << "#############################################################"<<endl;
@@ -441,12 +475,15 @@ void PrintInfo(double delta_t, string COMM, Numerics data){
     tempfile << "------------------------------------------------------" << endl;
     tempfile << "Random is " << Turn_off_random << " times normal strength." << endl;
     tempfile << "------------------------------------------------------" << endl;
+    tempfile << "Trail is: " << giventrail << endl;
+    tempfile << "------------------------------------------------------" << endl;
     tempfile << "Sensing Area Radius (cm)               " << SensingAreaRadius << endl;
     tempfile << "Sensing Area Radius (X_hat)            " << SENSING_AREA_RADIUS << endl;
     tempfile << "Sensing Half Angle             	Pi/ " << Pi/SensingAreaHalfAngle << endl;
     tempfile << "Natural Velocity (cm/sec)              " << NaturalVelocityIncmsec << endl;
     tempfile << "Natural Velocity (X_hat/t_hat)         " << NaturalVelocity << endl;
-    tempfile << "Lambda                                 " << Lambda << endl;
+    tempfile << "Lambda (if Nonlocal)                   " << LambdaNonlocal << endl;
+    tempfile << "Lambda (if Deltas)                     " << LambdaDeltas << endl;
     tempfile << "Diffusion                              " << Diffusion << endl;
     tempfile << "Evaporation                            " << Evaporation << endl;
     tempfile << "Droplet Amount                         " << DropletAmount << endl;
@@ -525,14 +562,17 @@ int main (void){
     
     Ant * Pop;
     Pop = new Ant[NN];
-    
-
+  
 
     for (int antnumber=0; antnumber < totalantnumber; antnumber++) {
         
         //  Random initial velocities
         Pop[antnumber].AntVelX = 0.1*cos(Normal(generator));
         Pop[antnumber].AntVelY = 0.1*sin(Normal(generator));
+        //  Normalize initial velocities
+        double fffactor = Pop[antnumber].AntVelX*Pop[antnumber].AntVelX + Pop[antnumber].AntVelY*Pop[antnumber].AntVelY;
+        Pop[antnumber].AntVelX *= NaturalVelocity/sqrt(fffactor);
+        Pop[antnumber].AntVelY *= NaturalVelocity/sqrt(fffactor);
         
         Pop[antnumber].AntFilenamePos = "AntPos-"+to_string(antnumber+1)+".txt";
         Pop[antnumber].AntFilePos.open(Pop[antnumber].AntFilenamePos,ofstream::app);
@@ -611,9 +651,9 @@ int main (void){
             }
 
             if (ChangedSide == 1) {
-//                Uncomment here to make gnuplot datablocks:
-//                Pop[antnumber].AntFilePos << endl;
-//                Pop[antnumber].AntFilePhase << endl;
+//                Uncomment here to make gnuplot datablocks for good periodic plots:
+                Pop[antnumber].AntFilePos << endl;
+                Pop[antnumber].AntFilePhase << endl;
                 ChangedSide = 0;
             }
             
@@ -684,6 +724,17 @@ int main (void){
         }
     }
     Phero.close();
+
+    ofstream PheroEffective;
+    PheroEffective.open("PheroEffective.txt");
+    for(int j=1;j<=numxx;j++){
+        for(int k=1;k<=numyy;k++){
+            PheroEffective << x_1 + j*delta_x << "\t"<< y_1 + k*delta_y << "\t" << max(Ant::Pheromone(j,k),Threshold) << endl;
+            if(k==numyy)
+                PheroEffective << endl;
+        }
+    }
+    PheroEffective.close();
 //*/
 
     

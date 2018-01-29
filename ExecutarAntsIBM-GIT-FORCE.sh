@@ -11,13 +11,12 @@ cp antsibm"$Version"  "$Folder"
 cp AntsIBM"$Version".cpp  "$Folder"/CPPAntsIBMUsado.cpp
 cp Classes.h  "$Folder"/ClassesUsado.h
 cp plot-png.sh  "$Folder"
+cp PlotAntOnTrail.sh  "$Folder"
 #cp plots-Mass.plt  "$Folder"
 cd "$Folder"
 
 ./antsibm"$Version" &&
-echo "1!"
 #mkdir Plots
-echo "2!"
 #sh plot-png.sh &&
 #gnuplot plots-Mass.plt
 #cp ../LogsLast.txt .

@@ -22,11 +22,11 @@ Trail is: ATTENTION! Testing with given exponential trail. PheroNarrow is 0.8, P
 ------------------------------------------------------
 Sensing Area Radius (cm)               0.8
 Sensing Area Radius (X_hat)            0.8
-Sensing Half Angle             	Pi/ 1.9
+Sensing Half Angle             	Pi/ 2.02
 Natural Velocity (cm/sec)              2
 Natural Velocity (X_hat/t_hat)         2
-Lambda (if Nonlocal)                   6.22176
-Lambda (if Deltas)                     -30.2739
+Lambda (if Nonlocal)                   5.83287
+Lambda (if Deltas)                     160.753
 Diffusion                              0.002
 Evaporation                            0.01
 Droplet Amount                         0

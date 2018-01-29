@@ -105,7 +105,7 @@ static double const SENSING_AREA_RADIUS = SensingAreaRadius / X_hat_in_cm;      
 //  |-| |\| |.. |   |-              //
 //  ` ' ' ` `-' `-' `-'             //
 //////////////////////////////////////
-static double const SensingAreaHalfAngle = 1.*Pi/1.9;         //
+static double const SensingAreaHalfAngle = 1.*Pi/4.2;         //
 
 //  Natural Ant velocity in cm/s
 static double const NaturalVelocityIncmsec = 2.;         // 2.

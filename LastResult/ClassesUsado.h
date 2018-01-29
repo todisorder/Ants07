@@ -488,11 +488,15 @@ double Ant::PheromoneConcentration(double X, double Y){
 // cout << "current a.n.=" << CurrentAntNumber<< endl;
 //cout << "pher =" << aux << endl; 
 
-    aux1 = 1.*PheroHigh*exp(-PheroNarrow*abs(X));   // To test with given trail!
+//    aux1 = 1.*PheroHigh*exp(-PheroNarrow*abs(X));   // To test with given trail!
+//    if (X <= PheroNarrow) {
+//        aux1 = PheroHigh;
+//    }
+    
     int test = TestWithGivenTrail;
 //  cout << "Phero: " <<SensitivityFunction(aux) + test*SensitivityFunction(aux1) << endl;
-    return SensitivityFunction(aux) + test*SensitivityFunction(aux1);
-    
+//    return SensitivityFunction(aux)*(1. - test) + test*SensitivityFunction(aux1);
+    return SensitivityFunction(aux)*(1. - test) + test*SensitivityFunction(GivenTrail(X));
    
 }
 //////////////////////////////////////////////////////////////////////
@@ -601,24 +605,24 @@ double Ant::ForceX(){
     double auxX = 0.;
     
     if (Method == "NonlocalOnly") {
-        //        cout << "NL " << endl;
         
         for (int kk=0; kk <= RNumber; kk++) {
             for (int jj=0; jj <= ThetaNumber; jj++) {
                 double pointr = DRSector*kk;
                 double pointtheta = Angle(AntVelX,AntVelY) - SensingAreaHalfAngle + DThetaSector*jj;
-                aux = aux + DRSector * DThetaSector * pointr*cos(pointtheta) * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr*pointr ;
-                auxX = auxX + DRSector * DThetaSector * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr*pointr ;
+                aux = aux + DRSector * DThetaSector * pointr*cos(pointtheta) * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) *pointr ;
+                auxX = auxX + DRSector * DThetaSector * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr ;
+                
             }
         }
         // FALTA a correção para ser periodico!!!!!!!!!!!!!
         
         aux = aux/auxX;
-        return Lambda * aux;
+
+        return LambdaNonlocal * aux;
     }
     
     if (Method == "Deltas") {
-        //        cout << "NL " << endl;
         
         double pointr = DRSector*RNumber;
         double pointthetaL = Angle(AntVelX,AntVelY) - SensingAreaHalfAngle;
@@ -633,7 +637,7 @@ double Ant::ForceX(){
         // FALTA a correção para ser periodico!!!!!!!!!!!!!
         
         aux = aux/auxX;
-        return Lambda * aux;
+        return LambdaDeltas * aux;
     }
     
     
@@ -641,7 +645,6 @@ double Ant::ForceX(){
     
     
     if (Method == "LocalOnly") {
-//        cout << "L " << endl;
         
         double A11 = cos(2.*Angle(AntVelX,AntVelY));
         double A12 = sin(2.*Angle(AntVelX,AntVelY));
@@ -682,25 +685,22 @@ double Ant::ForceY(){
     
     
     if (Method == "NonlocalOnly") {
-        //        cout << "NL " << endl;
-        
         
         for (int kk=0; kk <= RNumber; kk++) {
             for (int jj=0; jj <= ThetaNumber; jj++) {
                 double pointr = DRSector*kk;
                 double pointtheta = Angle(AntVelX,AntVelY) - SensingAreaHalfAngle + DThetaSector*jj;
-                aux = aux + DRSector * DThetaSector * pointr*sin(pointtheta) * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr*pointr ;
-                auxY = auxY + DRSector * DThetaSector * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr*pointr ;
+                aux = aux + DRSector * DThetaSector * pointr*sin(pointtheta) * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr ;
+                auxY = auxY + DRSector * DThetaSector * PheromoneConcentration(AntPosX + pointr*cos(pointtheta), AntPosY + pointr*sin(pointtheta)) * pointr ;
             }
         }
         // FALTA a correção para ser periodico!!!!!!!!!!!!!
         
         aux = aux/auxY;
         
-        return Lambda * aux;
+        return LambdaNonlocal * aux;
     }
     if (Method == "Deltas") {
-        //        cout << "NL " << endl;
         
         // FALTA a correção para ser periodico!!!!!!!!!!!!!
         
@@ -715,13 +715,10 @@ double Ant::ForceY(){
         
         aux = aux/auxY;
         
-        return Lambda * aux;
+        return LambdaDeltas * aux;
     }
     
     if (Method == "LocalOnly") {
-//        cout << "L " << endl;
-        
-        
         
         double A21 = sin(2.*Angle(AntVelX,AntVelY));
         double A22 = - cos(2.*Angle(AntVelX,AntVelY));
@@ -844,8 +841,8 @@ void Ant::BuildPheromone(){
      		}   
    		 }
             
-            Pheromone(i,j) = aux;
-            Pheromone(i,j) += TestWithGivenTrail*PheroHigh*exp(-PheroNarrow*abs(x_1+i*delta_x));   // To test with given trail!
+            Pheromone(i,j) = aux*(1.-TestWithGivenTrail) + TestWithGivenTrail*GivenTrail(x_1+i*delta_x);
+//            Pheromone(i,j) += TestWithGivenTrail*PheroHigh*exp(-PheroNarrow*abs(x_1+i*delta_x));   // To test with given trail!
         }
     }
 
